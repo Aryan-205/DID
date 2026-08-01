@@ -1,26 +1,180 @@
 @import "tailwindcss";
 
+/*
+  Defense In Depth Solutions - design tokens.
+
+  Palette: white canvas, one blue accent. No second hue. Section separation comes
+  from hairlines, a faintly blue-tinted sunken band, and blue radial washes.
+
+  Shape system (locked, applied everywhere):
+    - header shell                               : 16px  -> rounded-shell
+    - interactive controls (buttons, nav items)  : 12px  -> rounded-control
+    - cards / panels                             : 20px  -> rounded-card
+    - tiles nested inside cards                  : 12px  -> rounded-tile
+    - inputs                                     : 10px  -> rounded-field
+    - non-interactive tags, and icon-only discs  : full radius
+
+  The rule: anything you click is a soft rectangle. Full-round is reserved for
+  passive tags and for circular icon badges, where a disc is the intended shape.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /*
+    Locked to light. The brand direction is a white page with a blue accent, so the
+    page does not follow prefers-color-scheme. color-scheme keeps form controls,
+    scrollbars and focus rings light even when the OS is in dark mode.
+  */
+  color-scheme: light;
+
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  /* Cards sit on a white page, so definition comes from --line plus elevation. */
+  --surface-sunken: #f5f8fd;
+
+  --ink: #0d1420;
+  --ink-soft: #3d4757;
+  --muted: #6b7482;
+  --faint: #98a0ac;
+
+  --line: #e5e9f1;
+  --line-strong: #d4dae7;
+
+  --accent: #1d6df5;
+  --accent-hover: #1559cf;
+  --accent-ink: #ffffff;
+  --accent-tint: #e9f1fe;
+  --accent-tint-ink: #14539c;
+
+  /* Ambient washes. All drawn from the single blue. */
+  --wash-blue: #d9e6fb;
+  --wash-blue-soft: #eef4fe;
+  --wash-blue-deep: #c9dcf9;
+
+  /*
+    Named --elevation-* rather than --shadow-*: the @theme block below maps these
+    into Tailwind's --shadow-* namespace, and reusing the name there would emit a
+    self-referential `--shadow-card: var(--shadow-card)`.
+  */
+  --elevation-card: 0 1px 2px rgb(13 20 32 / 0.04), 0 8px 24px -12px rgb(13 20 32 / 0.08);
+  --elevation-lift: 0 2px 4px rgb(13 20 32 / 0.05), 0 18px 40px -18px rgb(13 20 32 / 0.14);
+  --elevation-pill: 0 1px 2px rgb(13 20 32 / 0.06), 0 12px 28px -14px rgb(13 20 32 / 0.18);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-sunken: var(--surface-sunken);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-tint-ink: var(--accent-tint-ink);
+
+  --color-wash-blue: var(--wash-blue);
+  --color-wash-blue-soft: var(--wash-blue-soft);
+  --color-wash-blue-deep: var(--wash-blue-deep);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --radius-shell: 16px;
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-tile: 12px;
+  --radius-field: 10px;
+
+  --shadow-card: var(--elevation-card);
+  --shadow-lift: var(--elevation-lift);
+  --shadow-pill: var(--elevation-pill);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Floating header height plus breathing room, so anchors do not land under it. */
+    scroll-padding-top: 7rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Soft blue wash rising from the bottom, behind the hero and closing CTA. */
+  .wash-hero {
+    background-image:
+      radial-gradient(122% 80% at 50% 110%, var(--wash-blue) 0%, transparent 62%),
+      radial-gradient(70% 50% at 88% 84%, var(--wash-blue-soft) 0%, transparent 68%);
+  }
+
+  .wash-closing {
+    background-image:
+      radial-gradient(112% 86% at 50% 120%, var(--wash-blue) 0%, transparent 60%),
+      radial-gradient(76% 56% at 10% 6%, var(--wash-blue-soft) 0%, transparent 66%);
+  }
+
+  .wash-panel {
+    background-image:
+      linear-gradient(180deg, var(--wash-blue-soft) 0%, transparent 48%),
+      radial-gradient(86% 64% at 92% 100%, var(--wash-blue-soft) 0%, transparent 64%);
+  }
+
+  /*
+    Two illustration beds for card interiors. Both blue, one lighter and one
+    deeper, so a grid of cards still varies without introducing a second hue.
+  */
+  .wash-tile {
+    background-image:
+      linear-gradient(168deg, var(--wash-blue-soft) 0%, var(--surface) 72%),
+      radial-gradient(64% 58% at 82% 6%, var(--wash-blue) 0%, transparent 62%);
+  }
+
+  .wash-tile-deep {
+    background-image:
+      linear-gradient(168deg, var(--wash-blue) 0%, var(--surface) 78%),
+      radial-gradient(60% 56% at 18% 4%, var(--wash-blue-deep) 0%, transparent 64%);
+  }
 }
