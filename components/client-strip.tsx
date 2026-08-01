@@ -15,11 +15,11 @@ export function ClientStrip() {
             Twelve cells. Divides evenly at 2, 3 and 4 columns, so no breakpoint
             leaves a ragged final row.
           */}
-          <ul className="mt-8 grid grid-cols-2 overflow-hidden rounded-card border-l border-t border-line bg-surface sm:grid-cols-3 lg:grid-cols-4">
+          <ul className="mt-8 grid grid-cols-2 overflow-hidden rounded-card border-l border-t border-line sm:grid-cols-3 lg:grid-cols-4 bg-red-500 p-2">
             {clients.map((client) => (
               <li
                 key={client}
-                className="flex min-w-0 items-center justify-center border-b border-r border-line px-4 py-6"
+                className="flex min-w-0 items-center justify-center rounded-2xl bg-white px-4 py-6"
               >
                 <ClientLogo name={client} />
               </li>

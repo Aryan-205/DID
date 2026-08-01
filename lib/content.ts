@@ -96,6 +96,58 @@ export function getCredentials() {
   ];
 }
 
+/**
+ * Platforms the documented engagements actually ran on. Labelled "platforms we
+ * work on" rather than "partners", since a vendor partnership is a claim the
+ * source material does not evidence for any specific vendor.
+ */
+export const platforms = [
+  "Oracle",
+  "SAP",
+  "PeopleSoft",
+  "Adobe",
+  "BusinessObjects",
+  "IBM Rational",
+  "Micro Focus",
+  "Apache JMeter",
+] as const;
+
+/**
+ * Client wall. No headline figure: the source material names twelve clients and
+ * makes no claim about totals, retention or geography beyond the work on record.
+ */
+export const clientWall = {
+  headingLead: "Trusted across federal programs and",
+  headingAccent: "commercial enterprises",
+  headingTail: "nationwide",
+  body: "Agencies, prime contractors and commercial teams, supported from Houston and Leesburg.",
+} as const;
+
+/**
+ * Who we deliver for. Each segment is backed by a documented engagement rather
+ * than an aspirational market we have not worked in.
+ */
+export const segments = [
+  {
+    id: "federal",
+    name: "Federal agencies",
+    body: "Section 508 compliant forms, Oracle E-Business Suite delivered to federal process, and business intelligence reporting at the Department of Agriculture.",
+    icon: "bank",
+  },
+  {
+    id: "primes",
+    name: "Prime contractors",
+    body: "We work underneath primes on large federal programs, supplying SAP BW and BusinessObjects implementation capacity across three full lifecycle projects.",
+    icon: "handshake",
+  },
+  {
+    id: "commercial",
+    name: "Commercial enterprises",
+    body: "PeopleSoft HRMS benefits administration for a windows and doors manufacturer, and performance testing for a major postal service provider.",
+    icon: "buildings",
+  },
+] as const;
+
 export type Service = {
   id: string;
   name: string;

@@ -15,11 +15,12 @@ type CtaButtonProps = {
 
 const base =
   "group inline-flex shrink-0 items-center justify-center gap-2 rounded-control font-medium whitespace-nowrap " +
-  "transition-[transform,background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] " +
+  "transition-[transform,background-image,background-color,border-color,box-shadow] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] " +
   "active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-accent-ink shadow-pill hover:bg-accent-hover",
+  // Fill, 2px stroke and the four-layer shadow all live in .cta-face (globals.css).
+  primary: "cta-face text-white",
   secondary:
     "bg-surface text-ink border border-line shadow-card hover:border-line-strong hover:bg-sunken",
 };

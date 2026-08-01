@@ -5,7 +5,7 @@ import { hero, primaryCta } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section className="wash-hero relative isolate flex min-h-[100dvh] items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6">
+    <section className="relative isolate flex min-h-dvh items-center overflow-hidden px-4 pb-20 pt-28 sm:px-6">
       <div className="mx-auto w-full max-w-5xl text-center">
         <Reveal>
           <p className="inline-flex items-center gap-2 rounded-full border border-line/80 bg-surface/80 py-1.5 pl-2.5 pr-4 text-[12.5px] font-medium text-ink-soft shadow-card backdrop-blur-sm">
@@ -37,7 +37,8 @@ export function Hero() {
             <CtaButton
               href={primaryCta.href}
               label={primaryCta.label}
-              withIcon
+              variant="primary"
+              size="lg"
               className="w-full sm:w-auto"
             />
             <CtaButton

@@ -1,9 +1,10 @@
 import { About } from "@/components/about";
 import { Careers } from "@/components/careers";
 import { CaseStudies } from "@/components/case-studies";
-import { ClientStrip } from "@/components/client-strip";
+import { ClientWall } from "@/components/client-wall";
 import { Closing } from "@/components/closing";
 import { Credentials } from "@/components/credentials";
+import { Segments } from "@/components/segments";
 import { Faq } from "@/components/faq";
 import { Hero } from "@/components/hero";
 import { Process } from "@/components/process";
@@ -18,7 +19,8 @@ export default function Home() {
       <SiteHeader />
       <main id="main">
         <Hero />
-        <ClientStrip />
+        <Segments />
+        <ClientWall />
         <Services />
         <Credentials />
         <CaseStudies />

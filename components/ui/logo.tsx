@@ -46,7 +46,7 @@ export function ClientLogo({ name }: { name: string }) {
       >
         {initialsFor(name)}
       </span>
-      <span className="truncate text-[13px] font-medium tracking-[-0.01em] text-ink-soft">
+      <span className="truncate text-base font-medium tracking-[-0.01em] text-ink-soft">
         {name}
       </span>
     </span>

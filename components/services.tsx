@@ -24,7 +24,6 @@ export function Services() {
     <section id="services" className="px-4 py-24 sm:px-6 sm:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
-          <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-accent">Services</p>
           <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
             Staffing, software and training under one contract.
           </h2>
@@ -61,17 +60,6 @@ export function Services() {
                     <p className="mt-2.5 max-w-prose text-[14.5px] leading-relaxed text-muted">
                       {service.summary}
                     </p>
-
-                    <ul className="mt-5 flex flex-wrap gap-2 pt-1">
-                      {service.points.map((point) => (
-                        <li
-                          key={point}
-                          className="rounded-full border border-line bg-sunken px-3 py-1.5 text-[12.5px] font-medium text-ink-soft"
-                        >
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </article>
               </Reveal>
