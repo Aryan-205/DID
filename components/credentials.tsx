@@ -5,12 +5,12 @@ export function Credentials() {
   const credentials = getCredentials();
 
   return (
-    <section className="border-y border-line bg-sunken px-4 py-16 sm:px-6 sm:py-20">
+    <section className="px-4 py-16 sm:px-6 sm:py-20 bg-white">
       <div className="mx-auto w-full max-w-6xl">
         {/* Plain stat row. No card containers, the numbers carry themselves. */}
         <dl className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4">
           {credentials.map((item, index) => (
-            <Reveal key={item.label} delay={index * 0.06}>
+            <Reveal key={item.label} delay={index * 0.06} className="bg-linear-to-br from-[#d9e6fb]/80 via-white to-[#9ed0ff]/40 shadow-[0_0_2px_1px_rgba(0,0,0,0.1)] rounded-2xl p-4">
               <div>
                 <dt className="text-[clamp(2rem,3.4vw,2.6rem)] font-semibold leading-none tracking-[-0.04em] text-ink tabular-nums">
                   {item.figure}

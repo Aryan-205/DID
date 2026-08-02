@@ -315,6 +315,11 @@ export const values = [
     statement: "Better our firm and develop our people.",
     points: ["Developing our people", "Building our brand", "Supporting our communities"],
   },
+  {
+    name: "Growth",
+    statement: "Better our firm and develop our people.",
+    points: ["Developing our people", "Building our brand", "Supporting our communities"],
+  },
 ] as const;
 
 export const about = {

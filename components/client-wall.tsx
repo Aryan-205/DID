@@ -37,7 +37,7 @@ export function ClientWall() {
         <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {clients.map((client, index) => (
             <Reveal key={client} as="li" delay={Math.min(index, 6) * 0.04} className="flex">
-              <div className="flex min-w-0 flex-1 items-center justify-center rounded-tile border border-line bg-white px-4 py-7 shadow-card hover:scale-105 duration-200 ease-in cursor-pointer">
+              <div className="flex min-w-0 flex-1 items-center justify-center rounded-tile border border-line bg-white px-4 py-7 shadow-card hover:scale-105 duration-200 ease-in cursor-pointer hover:shadow-lg hover:shadow-blue-200">
                 <ClientLogo name={client} />
               </div>
             </Reveal>

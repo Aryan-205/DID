@@ -31,7 +31,7 @@ export function About() {
               <div className="wash-tile grid h-56 shrink-0 place-items-center rounded-tile border border-line/70">
                 <span
                   aria-hidden="true"
-                  className="text-[2.75rem] font-semibold tracking-[-0.05em] text-accent/45"
+                  className="text-[2.75rem] font-semibold tracking-tighter text-accent/45"
                 >
                   MS
                 </span>
@@ -81,7 +81,7 @@ export function About() {
 
           {/* Values */}
           <Reveal delay={0.08} className="lg:col-span-7 flex">
-            <div className="flex w-full flex-col rounded-card border border-line bg-surface px-7 py-3 shadow-card sm:px-9">
+            <div className="flex w-full flex-col rounded-card border border-line bg-surface px-7 py-3 shadow-card sm:px-9 justify-center">
               <ul className="divide-y divide-line">
                 {values.map((value) => (
                   <li key={value.name} className="grid gap-1.5 py-6 sm:grid-cols-[9rem_1fr] sm:gap-6">
