@@ -47,12 +47,22 @@ export const primaryCta = {
   href: `mailto:${emails.sales}?subject=Consultation%20request`,
 } as const;
 
+/**
+ * Careers is a route of its own, so the landing page only teases it. Every other
+ * nav target is a section on the landing page and is written as `/#id` rather than
+ * `#id`, so the same header works from `/careers` as it does from home.
+ */
+export const routes = {
+  home: "/",
+  careers: "/careers",
+} as const;
+
 export const nav = [
-  { label: "Services", href: "#services" },
-  { label: "Past performance", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
-  { label: "Careers", href: "#careers" },
+  { label: "Services", href: "/#services" },
+  { label: "Past performance", href: "/#work" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
+  { label: "Careers", href: routes.careers },
 ] as const;
 
 export const hero = {
@@ -344,18 +354,189 @@ export const about = {
   ],
 } as const;
 
+/**
+ * Landing page teaser only. Three figures and a link: the full benefits table,
+ * workplace commitments, rewards and the open role live on /careers, so the
+ * landing page is not carrying a second page's worth of copy.
+ */
 export const careers = {
-  heading: "Careers at DID Solutions",
-  body: "We recruit and retain people who create value for our customers, and we treat a workplace as somewhere people spend a third of their lives.",
-  benefits: [
-    { name: "Medical and dental", detail: "Employee and family. The firm pays 80 percent of premium on a low deductible plan." },
-    { name: "Vision care", detail: "VSP, free to the employee with the firm covering the full premium." },
-    { name: "Life insurance", detail: "$50,000 of cover for every eligible employee." },
-    { name: "Long term disability", detail: "Fully funded by the firm for employees on the offered medical plan." },
-    { name: "Safe Harbor 401(k)", detail: "Available after three months of service, with the first 4 percent of gross wages matched." },
-    { name: "Paid time off", detail: "Ten days accrued weekly, plus ten designated federal holidays." },
+  eyebrow: "Careers",
+  heading: "A workplace worth a third of a life.",
+  body: "We recruit and retain people who create value for our customers, then back them with a benefits package comparable to those found in leading Fortune 500 companies.",
+  highlights: [
+    { figure: "80%", label: "Medical and dental", detail: "Share of premium the firm pays on a low deductible plan." },
+    { figure: "4%", label: "401(k) match", detail: "First 4 percent of gross wages, after three months of service." },
+    { figure: "20", label: "Paid days a year", detail: "Ten days of PTO plus ten designated federal holidays." },
   ],
+  nowHiring: "Now hiring: Project Manager, Houston TX",
+  ctaLabel: "Explore careers",
   applyNote: "Send a resume to",
+} as const;
+
+/**
+ * Full careers content, rendered at /careers. Sourced from section 5.7 of the
+ * content plan, with the two documented defects fixed: applications route to
+ * recruitment@didsolutions.net rather than a competitor's domain, and the 2018
+ * IRS contribution limits are omitted rather than published stale. The plan's
+ * broken list nesting under "enriching work-life environment" is corrected here
+ * by giving that item its own structure instead of four orphaned siblings.
+ */
+export const careersPage = {
+  eyebrow: "Careers at DID Solutions",
+  heading: "Our employees are the firm's most valuable asset.",
+  intro: [
+    "Defense In Depth Solutions strives to recruit and retain fully qualified individuals dedicated to creating value for our customers through consistent, high quality delivery. Our goal is to be the best of the best.",
+    "We also understand that our employees spend about a third of their life working, so a workplace should be somewhere people want to be. We searched for insurance providers covering health, dental, vision, life and long term disability that meet the needs of every employee, whatever state they live in.",
+  ],
+  stats: [
+    { figure: "80%", label: "Medical and dental", detail: "Of premium paid by the firm" },
+    { figure: "$50k", label: "Life insurance", detail: "For every eligible employee" },
+    { figure: "4%", label: "401(k) match", detail: "Of gross wages contributed" },
+    { figure: "5%", label: "Performance award", detail: "Of base pay, at the top end" },
+  ],
+  opening: {
+    eyebrow: "Featured opening",
+    title: "Project Manager",
+    location: "Houston, TX",
+    note: "Occasional travel to client locations within the U.S., a few days once every three months.",
+    dutiesTitle: "What the role covers",
+    duties: [
+      "Support management in preparing RFPs and proposals",
+      "Conduct Robotic Process Automation assessments and process analysis",
+      "Develop solution design documents and oversee proof of concept projects",
+      "Estimate development effort and manage deployment of developer resources",
+      "Identify and resolve process bottlenecks using Lean, Six Sigma and related methods",
+      "Run daily sprints, track project changes and ensure effective handover to clients",
+      "Provide technical guidance, mentor teams and facilitate decision making",
+      "Establish dashboards for project tracking and troubleshooting",
+    ],
+    requirementsTitle: "What we ask for",
+    requirements: [
+      "Bachelor's degree in business administration, commerce, computer information systems, computer science, management information systems or a related field",
+      "Twelve months of experience as a project manager, RPA project manager, associate director, automation manager, team leader, software engineer, delivery excellence assistant manager, quality executive or a related role",
+      "Any suitable combination of education, training or experience is acceptable",
+    ],
+  },
+  benefits: {
+    heading: "Compensation and benefits",
+    body: "Benefits are administered through ADP. Additional life insurance and short term disability cover are available through ADP, managed by Mercer.",
+    items: [
+      {
+        name: "Medical",
+        detail: "Employee and family, on a low deductible plan. The firm pays 80 percent of the employee premium; family member premiums are covered by the employee.",
+      },
+      {
+        name: "Dental",
+        detail: "Employee and family, on a low deductible plan. The firm pays 80 percent of the premium.",
+      },
+      {
+        name: "Vision care",
+        detail: "VSP, free to the employee with the firm covering the full premium. Dependent cover is out of pocket.",
+      },
+      { name: "Life insurance", detail: "$50,000 of cover for every eligible employee." },
+      {
+        name: "Long term disability",
+        detail: "Premium paid in full by the firm, for employees who elected the offered medical plan.",
+      },
+      {
+        name: "Additional cover",
+        detail: "Supplementary life insurance and short term disability, arranged through ADP and managed by Mercer.",
+      },
+    ],
+    support: {
+      label: "Benefits administrator",
+      lines: ["ADP, toll free 1-800-554-1802", "mytotalsource.com"],
+    },
+  },
+  leave: {
+    heading: "Leave and retirement",
+    items: [
+      { name: "Paid time off", detail: "Ten days per calendar year, accrued weekly." },
+      { name: "Holidays", detail: "Ten designated days on the US federal holiday schedule. Client holiday schedules are followed where a contract requires it." },
+      { name: "Safe Harbor 401(k)", detail: "Administered through ADP and available after three months of service." },
+      { name: "Employer match", detail: "The firm matches the first 4 percent of gross wages contributed." },
+    ],
+  },
+  worklife: {
+    heading: "An enriching work-life environment",
+    points: [
+      "Challenging and rewarding positions and tasks",
+      "A relentless focus on providing value-added services to our clients",
+      "Work that stretches every individual, yet still allows for some enjoyment",
+      "Executive commitment to work-life balance alongside customer satisfaction",
+    ],
+  },
+  workplace: {
+    heading: "A respectful workplace",
+    body: "Respect begins with a commitment to ethical principles and practices. It continues with understanding the value that each of our diverse talents, perspectives and abilities brings to the success of the company. This is more than compliance with Equal Opportunity and Affirmative Action rules: we believe our diversity is what makes us strong.",
+    vowsTitle: "Defense In Depth Solutions vows to",
+    vows: [
+      "Never discriminate on the basis of race, color, religion, sex, national origin, age, handicap or disability, genetic information, veteran's status or military status, with respect to recruitment, hiring, training, promotion and other terms and conditions of employment",
+      "Base employment decisions solely on an individual's qualifications against the requirements of the position",
+      "Recruit, hire and promote the best qualified person for every job",
+      "Maximize each employee's ability to contribute their own talents, perspectives and abilities",
+      "Treat everyone equally across compensation, benefits, transfers, layoffs, company-sponsored training, promotions, terminations and disciplinary actions",
+      "Keep an open door policy available to every employee",
+    ],
+  },
+  rewards: {
+    heading: "Rewards",
+    body: "Most firms measure an employee's effort as a cost. We measure it as a contribution, against the four core values every employee is expected to exemplify.",
+    items: [
+      {
+        name: "Superior Performance Award",
+        figure: "Up to 5% of base pay",
+        detail: "For those who routinely exceed customer expectations through the year, awarded and paid at the end of each contract year. Evaluation draws on customer input and direct supervisor feedback, and is determined by the project manager together with the president.",
+      },
+      {
+        name: "Net New Business Bonus",
+        figure: "$500 per full-time-equivalent",
+        detail: "Recognizes employees who play a significant role in adding resources to a program. The test is simple: would the addition have happened without that employee's involvement.",
+      },
+    ],
+  },
+  growth: {
+    heading: "Job growth and advancement",
+    body: "Exceptional employees demand the ability to grow and mature within a company. Potential growth here is limited only by an employee's talent, contribution and commitment.",
+    items: [
+      {
+        name: "Growth-focused training",
+        detail: "We work with each employee to define a training plan that advances the individual and moves company operations forward.",
+      },
+      {
+        name: "Continual corporate growth",
+        detail: "As the firm grows, so does the room to advance within it.",
+      },
+      {
+        name: "Equal access to openings",
+        detail: "Existing employees are considered for every new internal position.",
+      },
+    ],
+  },
+  pay: {
+    heading: "How pay is set",
+    items: [
+      {
+        name: "Base pay",
+        detail: "Competitive base salaries set against skills and qualifications, specialized technical skills and certifications, geographic location, and travel requirements.",
+      },
+      {
+        name: "Bonus pay",
+        detail: "An annual bonus based on company and individual performance. The pool is formed at corporate level on attainment of company goals and profitability, then disbursed on individual contribution.",
+      },
+    ],
+  },
+  apply: {
+    heading: "How to apply",
+    body: "Send a resume and tell us the kind of work you want. Applications are read by our own recruiters, not routed to a third party.",
+    postalLabel: "Or post it to",
+    postal: [
+      "Defense in Depth Solutions, Inc.",
+      "11445 Compaq Center W. Drive, Building CCA6",
+      "Houston, TX 77070",
+    ],
+    processNote: "Curious what happens next? Every candidate moves through the same twelve step screening process.",
+  },
 } as const;
 
 export const faqs = [
@@ -393,22 +574,23 @@ export const closing = {
 export const footerColumns = [
   {
     title: "Services",
-    links: services.map((service) => ({ label: service.name, href: `#${service.id}` })),
+    links: services.map((service) => ({ label: service.name, href: `/#${service.id}` })),
   },
   {
     title: "Company",
     links: [
-      { label: "About us", href: "#about" },
-      { label: "Past performance", href: "#work" },
-      { label: "Our process", href: "#process" },
-      { label: "Clients", href: "#clients" },
+      { label: "About us", href: "/#about" },
+      { label: "Past performance", href: "/#work" },
+      { label: "Our process", href: "/#process" },
+      { label: "Clients", href: "/#clients" },
     ],
   },
   {
     title: "Careers",
     links: [
-      { label: "Working here", href: "#careers" },
-      { label: "Benefits", href: "#careers" },
+      { label: "Working here", href: routes.careers },
+      { label: "Benefits", href: `${routes.careers}#benefits` },
+      { label: "Open roles", href: `${routes.careers}#opening` },
       { label: "Apply", href: `mailto:${emails.recruitment}?subject=Application` },
       { label: "Contact", href: `mailto:${emails.general}` },
     ],

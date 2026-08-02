@@ -16,13 +16,13 @@ export function Technologies() {
             <Reveal key={group.group} delay={index * 0.06}>
               <div>
                 <h3 className="text-[13px] font-semibold text-ink">{group.group}</h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
+                <ul className="mt-4 flex flex-col gap-2">
                   {group.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-full border border-line bg-surface px-3.5 py-2 text-[13px] font-medium text-ink-soft shadow-card"
+                      className="px-3.5 py-2 text-[13px] font-medium text-ink-soft border border-neutral-300 rounded-2xl"
                     >
-                      {item}
+                    {item}
                     </li>
                   ))}
                 </ul>

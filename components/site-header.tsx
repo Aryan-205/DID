@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import Link from "next/link";
 import { CtaButton } from "@/components/ui/cta-button";
+import { SmartLink } from "@/components/ui/smart-link";
 import { Wordmark } from "@/components/ui/logo";
 import { nav, primaryCta } from "@/lib/content";
 
@@ -41,20 +43,20 @@ export function SiteHeader() {
 
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6">
         <div className="mx-auto flex h-14 w-full max-w-4xl items-center justify-between gap-4 rounded-shell border border-line/80 bg-surface/85 pl-5 pr-2 shadow-pill backdrop-blur-xl">
-          <a href="#main" className="shrink-0" aria-label="Defense In Depth Solutions, home">
+          <Link href="/" className="shrink-0" aria-label="Defense In Depth Solutions, home">
             <Wordmark />
-          </a>
+          </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-1">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <SmartLink
                     href={item.href}
                     className="whitespace-nowrap rounded-control px-3 py-2 text-[13px] font-medium text-muted transition-colors duration-200 hover:text-ink"
                   >
                     {item.label}
-                  </a>
+                  </SmartLink>
                 </li>
               ))}
             </ul>
@@ -116,13 +118,13 @@ export function SiteHeader() {
                       ease: [0.16, 1, 0.3, 1],
                     }}
                   >
-                    <a
+                    <SmartLink
                       href={item.href}
                       onClick={() => setOpen(false)}
                       className="block border-b border-line py-4 text-2xl font-medium tracking-[-0.03em] text-ink"
                     >
                       {item.label}
-                    </a>
+                    </SmartLink>
                   </motion.li>
                 ))}
               </ul>

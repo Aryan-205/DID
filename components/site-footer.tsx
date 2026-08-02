@@ -1,5 +1,6 @@
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { CtaButton } from "@/components/ui/cta-button";
+import { SmartLink } from "@/components/ui/smart-link";
 import { Wordmark } from "@/components/ui/logo";
 import { company, footerColumns, linkedIn, primaryCta } from "@/lib/content";
 
@@ -26,12 +27,12 @@ export function SiteFooter() {
               <ul className="mt-4 flex flex-col gap-2.5">
                 {column.links.map((link) => (
                   <li key={`${column.title}-${link.label}`}>
-                    <a
+                    <SmartLink
                       href={link.href}
                       className="text-[13.5px] text-muted transition-colors duration-200 hover:text-ink"
                     >
                       {link.label}
-                    </a>
+                    </SmartLink>
                   </li>
                 ))}
               </ul>

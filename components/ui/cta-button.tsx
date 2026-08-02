@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 
 type Variant = "primary" | "secondary";
@@ -38,11 +39,10 @@ export function CtaButton({
   withIcon = false,
   className = "",
 }: CtaButtonProps) {
-  return (
-    <a
-      href={href}
-      className={`${base} ${variants[variant]} ${withIcon ? "h-12 pl-6 pr-1.5 text-[15px]" : sizes[size]} ${className}`}
-    >
+  const classes = `${base} ${variants[variant]} ${withIcon ? "h-12 pl-6 pr-1.5 text-[15px]" : sizes[size]} ${className}`;
+
+  const content = (
+    <>
       {label}
       {withIcon ? (
         <span
@@ -54,6 +54,25 @@ export function CtaButton({
           <ArrowUpRightIcon size={15} weight="bold" />
         </span>
       ) : null}
+    </>
+  );
+
+  /*
+    Route changes go through <Link> so they prefetch and transition client side.
+    mailto:, tel: and bare hashes stay on a plain anchor: Link has nothing to
+    prefetch for them, and a hash on the current page should just scroll.
+  */
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={classes}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} className={classes}>
+      {content}
     </a>
   );
 }
