@@ -292,11 +292,36 @@ export const processPhases = [
  * The legacy site also advertises WAP, J2ME, Bluetooth and Visual Basic; those
  * are deliberately omitted pending the client stack review noted in the plan.
  */
+export const technologiesIntro = {
+  eyebrow: "Platforms",
+  heading: "The platforms our engagements actually run on.",
+  body: "Not a capability matrix assembled from vendor brochures. Every platform below appears in work we have delivered and can point to.",
+  note: "Four disciplines, one thread: systems of record, the reporting built on top of them, the testing that proves they hold, and the accessibility standards federal delivery is judged against.",
+  linkLabel: "See past performance",
+  linkHref: "#work",
+} as const;
+
 export const technologies = [
-  { group: "Enterprise platforms", items: ["Oracle EBS 11i", "SAP BW", "SAP HANA", "PeopleSoft HRMS"] },
-  { group: "Reporting and integration", items: ["BusinessObjects", "SAP ABAP", "SAP PI", "BPEL"] },
-  { group: "Quality engineering", items: ["LoadRunner", "JMeter", "Rational Performance Tester"] },
-  { group: "Accessibility and forms", items: ["Adobe LiveCycle", "Smart Forms", "Section 508"] },
+  {
+    group: "Enterprise platforms",
+    detail: "The systems of record we build on, extend and support.",
+    items: ["Oracle EBS 11i", "SAP BW", "SAP HANA", "PeopleSoft HRMS"],
+  },
+  {
+    group: "Reporting and integration",
+    detail: "How data moves between those systems and reaches the people deciding on it.",
+    items: ["BusinessObjects", "SAP ABAP", "SAP PI", "BPEL"],
+  },
+  {
+    group: "Quality engineering",
+    detail: "Proving a build holds under load before it reaches production.",
+    items: ["LoadRunner", "JMeter", "Rational Performance Tester"],
+  },
+  {
+    group: "Accessibility and forms",
+    detail: "Federal delivery standards, met at the level of the individual document.",
+    items: ["Adobe LiveCycle", "Smart Forms", "Section 508"],
+  },
 ] as const;
 
 export const values = [
