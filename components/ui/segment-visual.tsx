@@ -92,8 +92,8 @@ function FederalLayers({ icon, reduce }: { icon: ReactNode; reduce: boolean }) {
         */}
         {reduce ? null : (
           <motion.span
-            className="pointer-events-none absolute inset-0 rounded-[39px] ring-1 ring-accent/25"
-            animate={{ scale: [1, 1.06, 1], opacity: [0, 0.9, 0] }}
+            className="pointer-events-none absolute inset-0 rounded-[39px] ring-1 ring-accent/25 bg-blue-200"
+            animate={{ scale: [1, 1.06, 1], opacity: [0, 0.5, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
           />
         )}
@@ -236,7 +236,7 @@ function CommercialLedger({ reduce }: { reduce: boolean }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5, ease }}
-        className="border-b border-line/80 pb-3 text-[11px] font-semibold tracking-[-0.01em] text-ink-soft"
+        className="border-b border-line/80 pb-3 pl-4 text-[11px] font-semibold tracking-[-0.01em] text-ink-soft"
       >
         On record
       </motion.p>
@@ -249,7 +249,7 @@ function CommercialLedger({ reduce }: { reduce: boolean }) {
             initial={{ y: 9, opacity: 0 }}
             animate={{
               y: [9, 9, ROW_HEIGHT + 9, ROW_HEIGHT * 2 + 9, ROW_HEIGHT * 2 + 9],
-              opacity: [0, 1, 1, 1, 0],
+              // opacity: [1, 1, 1, 1, 0],
             }}
             transition={{
               duration: 6,
