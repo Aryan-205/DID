@@ -54,12 +54,14 @@ export const primaryCta = {
  */
 export const routes = {
   home: "/",
+  services: "/services",
+  work: "/past-performance",
   careers: "/careers",
 } as const;
 
 export const nav = [
-  { label: "Services", href: "/#services" },
-  { label: "Past performance", href: "/#work" },
+  { label: "Services", href: routes.services },
+  { label: "Past performance", href: routes.work },
   { label: "Process", href: "/#process" },
   { label: "About", href: "/#about" },
   { label: "Careers", href: routes.careers },
@@ -162,101 +164,336 @@ export type Service = {
   id: string;
   name: string;
   summary: string;
-  points: readonly string[];
   /** Which of the two blue illustration beds this card uses. */
   tone: "light" | "deep";
+  /** Long form, rendered on /services. The landing page only reads name and summary. */
+  detail: {
+    body: readonly string[];
+    listTitle: string;
+    items: readonly { name: string; detail: string }[];
+    chipsTitle?: string;
+    chips?: readonly string[];
+  };
 };
 
+/*
+  The legacy service copy advertises WAP, SMS, Bluetooth, J2ME, Visual Basic,
+  MS Access upsizing, SOAP and ASP/JSP: a stack roughly twenty years old, flagged
+  in the content plan as needing a full rewrite with the client. The structure of
+  that copy is kept here; the technology claims are not, and the long form below
+  describes what we do rather than what we once did it in.
+*/
 export const services: readonly Service[] = [
   {
     id: "it-staffing",
     name: "IT staffing",
     summary:
       "We place highly skilled professionals on short and long term engagements, matched on skills, experience and working style rather than on keywords.",
-    points: ["Contract and temporary", "Contract to hire", "Permanent placement"],
     tone: "light",
+    detail: {
+      body: [
+        "We staff short and longer term engagements with professionals matched on skills, experience and working style. Years of placement work have built a network deep enough to find the right person for the role rather than the one who happens to be available.",
+        "We work from your requirements to define a strategic profile before sourcing begins, and we keep a screened pool that is constantly extending, so a critical position does not start from zero. Cost control is part of the brief, not a separate conversation: a resource who cannot do the work was never the cheaper option.",
+      ],
+      listTitle: "How the engagement is structured",
+      items: [
+        {
+          name: "Contract or temporary",
+          detail: "Defined scope and a defined end date, for a delivery push or a programme increment.",
+        },
+        {
+          name: "Contract to hire",
+          detail: "Evaluate someone on the actual work before making a permanent commitment.",
+        },
+        {
+          name: "Permanent placement",
+          detail: "A full search against a strategic profile agreed with you before sourcing opens.",
+        },
+      ],
+    },
   },
   {
     id: "software-development",
     name: "Software development",
     summary:
       "Bespoke business software across enterprise workflow systems, content management and reporting, delivered with full project lifecycle management.",
-    points: ["Enterprise workflow systems", "Content management", "Decision support and MIS"],
     tone: "deep",
+    detail: {
+      body: [
+        "We deliver cost-effective bespoke business software across a broad range of sectors. The portfolio covers enterprise workflow systems, content management, and decision support built on warehoused data so reporting reflects the business rather than a snapshot of it.",
+        "We analyze, design, develop and implement, and we manage the full project lifecycle rather than handing back a build and leaving. Consultancy sits alongside it: system appraisals, analysis of existing processes, process re-engineering, feasibility studies, and support formulating IT strategy and business planning.",
+      ],
+      listTitle: "What we build",
+      items: [
+        {
+          name: "Enterprise workflow systems",
+          detail: "Process-heavy internal systems, built to the way the organization actually works.",
+        },
+        {
+          name: "Content management",
+          detail: "Structured publishing and document handling across offices and roles.",
+        },
+        {
+          name: "Decision support and MIS",
+          detail: "Management information drawn from warehoused data, for people who have to decide on it.",
+        },
+        {
+          name: "Consultancy and appraisal",
+          detail: "System appraisals, process re-engineering, feasibility studies and IT strategy.",
+        },
+      ],
+    },
   },
   {
     id: "training",
     name: "Training",
     summary:
       "Seminars and training that transfer knowledge to your team, lower business risk and open professional opportunities for the people you already employ.",
-    points: [
-      "Time management",
-      "Presentation skills",
-      "Stress management",
-      "Professional selling skills",
-      "Pre-employment and hiring",
-      "Workplace safety",
-    ],
     tone: "light",
+    detail: {
+      body: [
+        "Consulting is one way to handle a complex people problem. Transferring knowledge is another, and it is the one that lasts. Seminars and training sessions add value to the organization and to the people in it: teams that work more effectively, individuals with more professional opportunity, and materially lower business risk.",
+        "Programs are needs-based rather than sold from a catalogue. We also support corporate HR initiatives and corporate social responsibility programs where those are part of the same brief.",
+      ],
+      listTitle: "How training is delivered",
+      items: [
+        {
+          name: "Needs analysis first",
+          detail: "We establish what the gap actually is before proposing a program to close it.",
+        },
+        {
+          name: "Seminars and sessions",
+          detail: "Delivered to your team, in your context, against your working practices.",
+        },
+        {
+          name: "Corporate initiatives",
+          detail: "Support for specific HR and corporate social responsibility programs.",
+        },
+      ],
+      chipsTitle: "Named programs",
+      chips: [
+        "Time management",
+        "Presentation skills",
+        "Stress management",
+        "Professional selling skills",
+        "Professional development",
+        "Pre-employment and hiring",
+        "Workplace safety",
+      ],
+    },
   },
   {
     id: "web-services",
     name: "Web services",
     summary:
       "Web design and development built for reliability, with error free page loading and a structure flexible enough to grow with the organization.",
-    points: ["Web design and build", "Accessible front ends", "Multi-office rollouts"],
     tone: "deep",
+    detail: {
+      body: [
+        "Web design and development built for reliability. The federal healthcare engagement on record spans multiple offices, with error free page loading and a structure flexible enough to support expansion rather than be rebuilt after it.",
+        "Accessibility is a delivery standard here, not a retrofit. The same Section 508 discipline that governs our forms work governs the front ends we build.",
+      ],
+      listTitle: "What the work covers",
+      items: [
+        {
+          name: "Web design and build",
+          detail: "Design through to production, for organizations that cannot afford a broken page.",
+        },
+        {
+          name: "Accessible front ends",
+          detail: "Section 508 treated as a requirement of the build, not an audit afterwards.",
+        },
+        {
+          name: "Multi-office rollouts",
+          detail: "One structure serving several offices, extended as the organization grows.",
+        },
+      ],
+    },
   },
 ] as const;
 
-export type CaseStudy = {
+export const servicesPage = {
+  eyebrow: "Services",
+  heading: "Staffing, software and training under one contract.",
+  intro: [
+    "Four service lines, run by one firm that is accountable for all of them. Most suppliers separate the people from the delivery; we are answerable for both, which is why the screening process below applies to our own placements as strictly as it does to our own hires.",
+    "Everything here is a service we have delivered and can point to in past performance, not a capability added to a list because a solicitation asked for it.",
+  ],
+  stats: [
+    { figure: "4", label: "Service lines", detail: "Staffing, software, training, web" },
+    { figure: "12", label: "Screening steps", detail: "Before anyone reaches your team" },
+    { figure: "9", label: "Engagements", detail: "Documented in past performance" },
+    { figure: "508", label: "Compliant", detail: "Accessibility built into delivery" },
+  ],
+  approach: {
+    heading: "How the work runs",
+    body: "The same four movements on every engagement, whatever the service line. Full project lifecycle management means we are still there at implementation, not just at design.",
+    steps: [
+      { name: "Analyze", detail: "Establish the real requirement, including the parts the brief does not state." },
+      { name: "Design", detail: "Produce the technical and functional design, and agree it before anyone builds." },
+      { name: "Develop", detail: "Build and unit test against that design, with progress visible throughout." },
+      { name: "Implement", detail: "Carry it through test execution into production, and support what we deployed." },
+    ],
+    feedbackNote:
+      "We seek feedback from clients regularly, positive and negative, through surveys and questionnaires. Preferred supplier status with several of them came from that habit rather than from a sales cycle.",
+  },
+} as const;
+
+export type Engagement = {
   id: string;
   title: string;
   client: string;
   location: string | null;
+  /** Service line the work sat under, used to group the dossier on /past-performance. */
+  discipline: string;
   summary: string;
+  /** Line items, where the source material documents them. */
+  deliverables?: readonly string[];
   tech: readonly string[];
+  /** Carried onto the landing page teaser. Four of the nine. */
+  featured?: true;
 };
 
-/** Four featured engagements. Nine are documented in full on the past performance page. */
-export const caseStudies: readonly CaseStudy[] = [
+/**
+ * The nine documented engagements, in the order the content plan lists them.
+ * This is the firm's strongest credibility asset, so it lives in full on
+ * /past-performance; the landing page shows only the four marked featured.
+ */
+export const engagements: readonly Engagement[] = [
+  {
+    id: "federal-healthcare-web",
+    title: "Web development and services for a federal healthcare organization",
+    client: "Federal healthcare organization",
+    location: null,
+    discipline: "Web services",
+    summary:
+      "Designed and developed web services across multiple offices of a federal healthcare organization, with error free page loading and a structure flexible enough to support the organization's expansion rather than be rebuilt after it.",
+    tech: ["Web design", "Web development", "Multi-office rollout"],
+  },
   {
     id: "adobe-forms",
     title: "Fillable federal forms with digital signatures",
     client: "Federal agency",
     location: "Atlanta, GA",
+    discipline: "Software development",
     summary:
       "Designed and built standard Adobe PDF forms with digital signatures for a federal enterprise application, verified for Section 508 accessibility, then supported the offices creating, automating and printing them. The same program carried ongoing data collection and analysis for disease, injury and general health surveillance.",
+    deliverables: [
+      "Fillable standard Adobe PDF forms with digital signatures",
+      "Section 508 accessibility compliance across the form set",
+      "Support for federal offices creating, automating, modifying and printing forms",
+      "Standardized collection and dissemination of information",
+      "Ongoing data collection and analysis for disease, injury and general health surveillance",
+    ],
     tech: ["Adobe forms", "Digital signatures", "Section 508"],
+    featured: true,
   },
   {
-    id: "sap-usda",
-    title: "SAP business intelligence reporting lead",
-    client: "United States Department of Agriculture",
-    location: "New Orleans, LA",
+    id: "oracle-ebs-functional",
+    title: "Oracle E-Business Suite functional design and testing",
+    client: "Federal agency",
+    location: null,
+    discipline: "Software development",
     summary:
-      "Led BI reporting in a support and sustainment role across integrated solutions spanning financial, CRM, material management, grant and fund management, and budgeting and forecasting modules.",
-    tech: ["SAP HANA", "SAP BW", "BusinessObjects"],
+      "Created the functional design, test conditions and test scripts for Oracle 11i business processes, then executed testing through release completion and production deployment, following federal process throughout.",
+    tech: ["Oracle EBS 11i", "RICEF", "Functional testing"],
   },
   {
     id: "oracle-ebs",
     title: "Oracle E-Business Suite build and break-fix",
     client: "Federal agency",
     location: null,
+    discipline: "Software development",
     summary:
       "Handled design, build and unit test of Oracle 11i RICE objects, produced the technical design for custom EBS objects, and carried break-fix support from test execution through to production deployment.",
     tech: ["Oracle EBS 11i", "RICEF", "BPEL"],
+    featured: true,
+  },
+  {
+    id: "federal-facilities",
+    title: "Sustainment and modernization of federal facilities systems",
+    client: "Federal agency",
+    location: null,
+    discipline: "Software development",
+    summary:
+      "Worked in a multi-disciplinary team on requirements analysis and definition, use case and user story design, and validation of business case requests, alongside the product owner and development team on the technical solution and implementation plan.",
+    tech: ["Requirements analysis", "User story design", "Agile delivery"],
+  },
+  {
+    id: "sap-usda",
+    title: "SAP business intelligence reporting lead",
+    client: "United States Department of Agriculture",
+    location: "New Orleans, LA",
+    discipline: "Software development",
+    summary:
+      "Led BI reporting in a support and sustainment role across integrated solutions spanning financial, CRM, material management, grant and fund management, and budgeting and forecasting modules.",
+    tech: ["SAP HANA", "SAP BW", "BusinessObjects"],
+    featured: true,
+  },
+  {
+    id: "sap-bw-prime",
+    title: "SAP BW and BusinessObjects implementation under a prime",
+    client: "Federal program, via the prime contractor",
+    location: null,
+    discipline: "Software development",
+    summary:
+      "Supported the prime contractor through development, design and implementation of SAP BW 7.0 and BusinessObjects, covering Web Intelligence, the Information Design Tool and Data Services, across three full lifecycle SAP projects.",
+    deliverables: [
+      "Integrated planning applications",
+      "SAP ABAP development and enhancement framework work",
+      "SAP workflow design and PI development",
+      "Interactive Adobe forms, Smart Forms and ALV reports",
+    ],
+    tech: ["SAP BW 7.0", "BusinessObjects", "SAP ABAP", "SAP PI"],
+  },
+  {
+    id: "peoplesoft-hrms",
+    title: "PeopleSoft HRMS benefits administration",
+    client: "Windows and doors manufacturer",
+    location: "Minnesota",
+    discipline: "Software development",
+    summary:
+      "Implemented benefits administration for a major manufacturer: customized PeopleSoft code, translated business requirements into technical documents, and provided functional HR and technical expertise to the program.",
+    tech: ["PeopleSoft HRMS", "Benefits administration"],
   },
   {
     id: "test-automation",
     title: "Performance and automation testing at postal scale",
     client: "Major postal service provider",
     location: null,
+    discipline: "Quality engineering",
     summary:
       "Defined the performance test strategy, approach and planning for custom ERP systems, identified bottlenecks in the system under test, and trained junior team members on the methodology and tooling.",
+    deliverables: [
+      "Define the performance test strategy for the system under test",
+      "Create the performance test plan",
+      "Train junior team members on performance test methodology and tools",
+      "Identify bottlenecks in the system under test",
+      "Ensure performance testing adheres to industry standards",
+    ],
     tech: ["LoadRunner", "Rational Performance Tester", "JMeter"],
+    featured: true,
   },
 ] as const;
+
+/** Landing page teaser set. Derived, so the two views cannot drift apart. */
+export const caseStudies = engagements.filter((engagement) => engagement.featured);
+
+export const workPage = {
+  eyebrow: "Past performance",
+  heading: "Nine engagements, delivered to federal process.",
+  intro: [
+    "Every engagement below is work this firm has delivered. Client names are given where we are free to give them, and described by type where we are not.",
+    "The pattern across them is consistent: enterprise systems of record, the reporting built on top of them, and the testing and accessibility work that decides whether either survives contact with a federal review.",
+  ],
+  stats: [
+    { figure: "9", label: "Engagements", detail: "Documented end to end" },
+    { figure: "3", label: "Full lifecycles", detail: "SAP projects, start to finish" },
+    { figure: "7", label: "Federal programs", detail: "Agencies, healthcare and via primes" },
+    { figure: "508", label: "Compliant", detail: "Verified on federal form sets" },
+  ],
+  note: "Client references are available on request for the engagements listed here.",
+} as const;
 
 /**
  * The published twelve step recruitment process, grouped into four phases.
@@ -298,7 +535,7 @@ export const technologiesIntro = {
   body: "Not a capability matrix assembled from vendor brochures. Every platform below appears in work we have delivered and can point to.",
   note: "Four disciplines, one thread: systems of record, the reporting built on top of them, the testing that proves they hold, and the accessibility standards federal delivery is judged against.",
   linkLabel: "See past performance",
-  linkHref: "#work",
+  linkHref: routes.work,
 } as const;
 
 export const technologies = [
@@ -599,13 +836,16 @@ export const closing = {
 export const footerColumns = [
   {
     title: "Services",
-    links: services.map((service) => ({ label: service.name, href: `/#${service.id}` })),
+    links: services.map((service) => ({
+      label: service.name,
+      href: `${routes.services}#${service.id}`,
+    })),
   },
   {
     title: "Company",
     links: [
       { label: "About us", href: "/#about" },
-      { label: "Past performance", href: "/#work" },
+      { label: "Past performance", href: routes.work },
       { label: "Our process", href: "/#process" },
       { label: "Clients", href: "/#clients" },
     ],

@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/ui/reveal";
+import { SmartLink } from "@/components/ui/smart-link";
 import { technologies, technologiesIntro } from "@/lib/content";
 
 export function Technologies() {
@@ -45,7 +46,7 @@ export function Technologies() {
                 </div>
               </dl>
 
-              <a
+              <SmartLink
                 href={technologiesIntro.linkHref}
                 className="group mt-7 inline-flex items-center gap-2 text-[14px] font-medium text-accent"
               >
@@ -56,7 +57,7 @@ export function Technologies() {
                   aria-hidden="true"
                   className="transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5"
                 />
-              </a>
+              </SmartLink>
             </Reveal>
           </div>
 

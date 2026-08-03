@@ -34,13 +34,6 @@ export function SiteHeader() {
 
   return (
     <>
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-surface focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-ink focus:shadow-pill"
-      >
-        Skip to content
-      </a>
-
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6">
         <div className="mx-auto flex h-14 w-full max-w-4xl items-center justify-between gap-4 rounded-shell border border-line/80 bg-surface/85 pl-5 pr-2 shadow-pill backdrop-blur-xl">
           <Link href="/" className="shrink-0" aria-label="Defense In Depth Solutions, home">

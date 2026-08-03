@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { CareersApply } from "@/components/careers-apply";
 import { CareersBenefits } from "@/components/careers-benefits";
-import { CareersHero } from "@/components/careers-hero";
 import { CareersOpening } from "@/components/careers-opening";
 import { CareersRewards } from "@/components/careers-rewards";
 import { CareersWorkplace } from "@/components/careers-workplace";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { CtaButton } from "@/components/ui/cta-button";
+import { PageHero } from "@/components/ui/page-hero";
+import { careersPage, emails } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -25,7 +27,20 @@ export default function CareersPage() {
     <>
       <SiteHeader />
       <main id="main">
-        <CareersHero />
+        <PageHero
+          eyebrow={careersPage.eyebrow}
+          heading={careersPage.heading}
+          intro={careersPage.intro}
+          stats={careersPage.stats}
+        >
+          <CtaButton
+            href={`mailto:${emails.recruitment}?subject=Application`}
+            label="Send your resume"
+            size="lg"
+            withIcon
+          />
+          <CtaButton href="#opening" label="See the open role" variant="secondary" size="lg" />
+        </PageHero>
         <CareersOpening />
         <CareersBenefits />
         <CareersWorkplace />
