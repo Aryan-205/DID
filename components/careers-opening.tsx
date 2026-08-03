@@ -1,6 +1,7 @@
 import { CheckCircleIcon, MapPinIcon } from "@phosphor-icons/react/dist/ssr";
 import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { careersPage, emails } from "@/lib/content";
 
 const { opening } = careersPage;
@@ -8,10 +9,12 @@ const { opening } = careersPage;
 export function CareersOpening() {
   return (
     <section id="opening" className="px-4 pb-24 sm:px-6 sm:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-6xl relative z-10">
         <Reveal>
           <article className="overflow-hidden rounded-card border border-line bg-surface shadow-card">
-            <header className="wash-tile border-b border-line px-6 py-8 sm:px-10 sm:py-10">
+            <header
+              className="border-b border-line px-6 py-8 sm:px-10 sm:py-10"
+            >
               <p className="text-[13px] font-semibold text-accent">{opening.eyebrow}</p>
 
               <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">

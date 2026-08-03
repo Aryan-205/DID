@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { aboutPage } from "@/lib/content";
 
 const { story, facts, factsTitle } = aboutPage;
@@ -11,7 +12,7 @@ const { story, facts, factsTitle } = aboutPage;
 export function AboutStory() {
   return (
     <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-14 gap-y-12 lg:grid-cols-12">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-x-14 gap-y-12 lg:grid-cols-12 relative z-10">
         <Reveal className="lg:col-span-7">
           <div>
             <p className="text-[13px] font-semibold text-accent">{story.eyebrow}</p>
@@ -39,7 +40,9 @@ export function AboutStory() {
         <Reveal delay={0.08} className="lg:col-span-5">
           {/* Sticky against the prose, which is the longer column at every width. */}
           <div className="lg:sticky lg:top-28">
-            <div className="wash-panel rounded-card border border-line px-6 py-2 shadow-card sm:px-7">
+            <div
+              className="rounded-card border border-line px-6 py-2 shadow-card sm:px-7 bg-white"
+            >
               <dl className="divide-y divide-line/80">
                 <div className="py-5">
                   <p className="text-[13px] font-semibold text-accent">{factsTitle}</p>

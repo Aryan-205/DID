@@ -1,11 +1,14 @@
 import { EnvelopeSimpleIcon, PhoneIcon, PrinterIcon } from "@phosphor-icons/react/dist/ssr";
 import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal } from "@/components/ui/reveal";
+import { Wash } from "@/components/ui/wash";
 import { closing, offices, primaryCta } from "@/lib/content";
 
 export function Closing() {
   return (
-    <section id="contact" className="wash-closing relative isolate px-4 py-28 sm:px-6 sm:py-36">
+    <section id="contact" className="relative isolate px-4 py-28 sm:px-6 sm:py-36">
+      <Wash variant="closing" />
+
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>
           <div className="text-center">

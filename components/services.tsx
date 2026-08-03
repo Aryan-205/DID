@@ -1,23 +1,10 @@
-import {
-  ArrowUpRightIcon,
-  BrowsersIcon,
-  GraduationCapIcon,
-  StackIcon,
-  UsersThreeIcon,
-} from "@phosphor-icons/react/dist/ssr";
-// Type-only, so it is erased at compile time and pulls in no client runtime.
-import type { Icon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal } from "@/components/ui/reveal";
+import { ServiceVisual } from "@/components/ui/service-visual";
 import { SmartLink } from "@/components/ui/smart-link";
+import { washSurface } from "@/components/ui/wash";
 import { routes, services } from "@/lib/content";
-
-const icons: Record<string, Icon> = {
-  "it-staffing": UsersThreeIcon,
-  "software-development": StackIcon,
-  training: GraduationCapIcon,
-  "web-services": BrowsersIcon,
-};
 
 /** Asymmetric spans give the grid rhythm. Four items, four cells, no dead space. */
 const spans = ["lg:col-span-7", "lg:col-span-5", "lg:col-span-5", "lg:col-span-7"];
@@ -50,8 +37,6 @@ export function Services() {
 
         <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-12">
           {services.map((service, index) => {
-            const IconComponent = icons[service.id]!;
-
             return (
               <Reveal
                 key={service.id}
@@ -62,14 +47,15 @@ export function Services() {
                   href={`${routes.services}#${service.id}`}
                   className="group flex w-full flex-col overflow-hidden rounded-card border border-line bg-surface p-2 shadow-card transition-shadow duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:shadow-lift"
                 >
+                  {/*
+                    Clipped: each illustration is sized to fill its bed rather than to
+                    fit inside it, and the page-paint frame is meant to run to the edge.
+                  */}
                   <div
-                    className={`${
-                      service.tone === "deep" ? "wash-tile-deep" : "wash-tile"
-                    } grid h-40 shrink-0 place-items-center rounded-tile border border-line/70 sm:h-48`}
+                    style={washSurface(service.tone === "deep" ? "tile-deep" : "tile")}
+                    className="h-40 shrink-0 overflow-hidden rounded-tile border border-line/70 sm:h-48"
                   >
-                    <span className="grid h-14 w-14 place-items-center rounded-full bg-surface text-accent shadow-card transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-1">
-                      <IconComponent size={26} weight="duotone" aria-hidden="true" />
-                    </span>
+                    <ServiceVisual id={service.id} />
                   </div>
 
                   <div className="flex flex-1 flex-col p-6">

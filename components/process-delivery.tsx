@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { processPage, servicesPage } from "@/lib/content";
 
 const { delivery } = processPage;
@@ -45,7 +46,10 @@ export function ProcessDelivery() {
 
                   <p className="mt-4 text-[14px] leading-relaxed text-muted">{step.detail}</p>
 
-                  <div className="wash-tile mt-6 rounded-tile border border-line/70 p-4">
+                  <div
+                    style={washSurface("tile")}
+                    className="mt-6 rounded-tile border border-line/70 p-4"
+                  >
                     <p className="text-[11.5px] font-semibold uppercase tracking-[0.06em] text-accent">
                       Hands over
                     </p>

@@ -1,6 +1,7 @@
 import { ArrowRightIcon, CheckCircleIcon, LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { about, company, linkedIn, routes, values } from "@/lib/content";
 
 export function About() {
@@ -43,7 +44,10 @@ export function About() {
                 Deliberately not using stock photography here: inventing a likeness for a
                 named real person is not acceptable placeholder content.
               */}
-              <div className="wash-tile grid h-56 shrink-0 place-items-center rounded-tile border border-line/70">
+              <div
+                style={washSurface("tile")}
+                className="grid h-56 shrink-0 place-items-center rounded-tile border border-line/70"
+              >
                 <span
                   aria-hidden="true"
                   className="text-[2.75rem] font-semibold tracking-tighter text-accent/45"

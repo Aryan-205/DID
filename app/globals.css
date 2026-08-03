@@ -54,6 +54,8 @@
   /* Sky blue behind the segments band, specified as #9ED0FF = rgb(158 208 255). */
   --wash-sky: #9ed0ff;
 
+  --wash-sand: #fbf3ee;
+
   /*
     Named --elevation-* rather than --shadow-*: the @theme block below maps these
     into Tailwind's --shadow-* namespace, and reusing the name there would emit a
@@ -155,61 +157,12 @@
 }
 
 @layer components {
-  /* Soft blue wash rising from the bottom, behind the hero and closing CTA. */
-  .wash-hero {
-    background-image:
-      radial-gradient(122% 80% at 50% 110%, var(--wash-blue) 0%, transparent 62%),
-      radial-gradient(70% 50% at 88% 84%, var(--wash-blue-soft) 0%, transparent 68%);
-  }
-
-  .wash-closing {
-    background-image:
-      radial-gradient(112% 86% at 50% 120%, var(--wash-blue) 0%, transparent 60%),
-      radial-gradient(76% 56% at 10% 6%, var(--wash-blue-soft) 0%, transparent 66%);
-  }
-
-  .wash-panel {
-    background-image:
-      linear-gradient(180deg, var(--wash-blue-soft) 0%, transparent 48%),
-      radial-gradient(86% 64% at 92% 100%, var(--wash-blue-soft) 0%, transparent 64%);
-  }
-
   /*
-    Two illustration beds for card interiors. Both blue, one lighter and one
-    deeper, so a grid of cards still varies without introducing a second hue.
+    The ambient blue washes are not here. They live in components/ui/wash.tsx,
+    because a background-image is clipped to its own element's box and the
+    section-level washes need to bleed past the section that owns them. See the
+    note at the top of that file.
   */
-  .wash-tile {
-    background-image:
-      linear-gradient(168deg, var(--wash-blue-soft) 0%, var(--surface) 72%),
-      radial-gradient(64% 58% at 82% 6%, var(--wash-blue) 0%, transparent 62%);
-  }
-
-  .wash-tile-deep {
-    background-image:
-      linear-gradient(168deg, var(--wash-blue) 0%, var(--surface) 78%),
-      radial-gradient(60% 56% at 18% 4%, var(--wash-blue-deep) 0%, transparent 64%);
-  }
-
-  /*
-    Illustration bed for the segment cards. Purely radial: a sky glow rising from
-    the bottom edge with a soft secondary bloom top right, over a white base.
-  */
-  .wash-tile-sky {
-    background-color: var(--surface);
-    background-image:
-      radial-gradient(86% 78% at 50% 112%, rgb(158 208 255 / 0.55) 0%, transparent 68%),
-      radial-gradient(56% 52% at 84% 2%, rgb(158 208 255 / 0.26) 0%, transparent 64%);
-  }
-
-  /*
-    Sky wash behind the segment cards.
-    No trailing comma: background-image is a comma-separated list, so a dangling
-    comma makes the whole declaration invalid and the browser drops it silently.
-  */
-  .wash-segments {
-    background-image:
-      radial-gradient(100% 85% at 50% 60%, rgb(158 208 255 / 80%) 10%, transparent 54%);
-  }
 
   /*
     Primary CTA face, to the supplied spec:
@@ -233,11 +186,23 @@
     background-image: radial-gradient(ellipse at 50% 50%, #64b2fb 0%, #0b7ce4 100%);
   }
 
-  /* Soft tint behind the client wall, kept lighter than the segments band above it. */
-  .wash-wall {
-    background-image:
-      radial-gradient(92% 62% at 80% 4%, rgb(158 208 255 / 0.18) 0%, transparent 62%),
-      radial-gradient(70% 50% at 4% 96%, rgb(158 208 255 / 0.12) 0%, transparent 60%);
+  /*
+    Eyebrow pill face, to the supplied spec:
+      fill    #FFFFFF, fully opaque
+      stroke  1px inside, #F4F4F4
+      shadow  three stacked layers, all black:
+                0 6 3 at 3%, 0 3 3 at 4%, 0 1 1 at 5%
+    Radius is left to the utility (rounded-full), same as .cta-face. The fill is
+    opaque, so this deliberately carries no backdrop blur - there is nothing
+    behind it left to see.
+  */
+  .pill-face {
+    background-color: #ffffff;
+    border: 1px solid #f4f4f4;
+    box-shadow:
+      0 6px 3px 0 rgb(0 0 0 / 0.03),
+      0 3px 3px 0 rgb(0 0 0 / 0.04),
+      0 1px 1px 0 rgb(0 0 0 / 0.05);
   }
 
   /* Horizontal brand line. Track holds two copies of the list, so -50% loops seamlessly. */
@@ -271,5 +236,17 @@
     .marquee-track {
       animation: none;
     }
+  }
+
+  /*
+    Vertical edge fade, for the training programme roll on the services card. Same
+    idea as .marquee, turned 90 degrees, and steeper: the roll is 96px tall against
+    the brand line's full width, so the fade needs a larger share of the axis to
+    read as a dissolve rather than as a hard cut. The scroll itself is driven by
+    motion in service-visual.tsx, which is also where reduced motion is handled.
+  */
+  .marquee-vertical {
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
   }
 }

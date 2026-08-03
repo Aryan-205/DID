@@ -9,8 +9,8 @@ import { engagements, workPage } from "@/lib/content";
  */
 export function EngagementList() {
   return (
-    <section id="engagements" className="px-4 pb-24 sm:px-6 sm:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="engagements" className="px-4 pb-24 sm:px-6 sm:pb-32 bg-surface">
+      <div className="mx-auto w-full max-w-6xl relative z-10">
         <div className="overflow-hidden rounded-card border border-line bg-surface px-6 shadow-card sm:px-10 lg:px-14">
           <ul className="divide-y divide-line">
             {engagements.map((engagement, index) => (

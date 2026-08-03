@@ -3,6 +3,7 @@ import type { Icon } from "@phosphor-icons/react";
 import { ClientLogo } from "@/components/ui/logo";
 import { Reveal } from "@/components/ui/reveal";
 import { SegmentVisual } from "@/components/ui/segment-visual";
+import { Wash, washSurface } from "@/components/ui/wash";
 import { platforms, segments } from "@/lib/content";
 
 const icons: Record<string, Icon> = {
@@ -34,7 +35,12 @@ function BrandRow({ ariaHidden = false }: { ariaHidden?: boolean }) {
 
 export function Segments() {
   return (
-    <section id="segments" className="wash-segments px-4 pb-24 pt-6 sm:px-6 sm:pb-32">
+    <section
+      id="segments"
+      className="relative isolate px-4 pb-24 pt-6 sm:px-6 sm:pb-32"
+    >
+      <Wash variant="segments" />
+
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
           <p className="text-center text-[13px] font-medium text-muted">Platforms we work on</p>
@@ -57,12 +63,11 @@ export function Segments() {
             return (
               <Reveal key={segment.id} delay={index * 0.07} className="flex">
                 <article className="flex w-full flex-col rounded-panel bg-white p-2 shadow-segment">
-                  {/*
-                    Inner radius is 24px outer minus 8px padding, so the curves stay
-                    concentric with the card. Clipped, because the illustration inside
-                    is sized to fill the bed rather than to fit inside it.
-                  */}
-                  <div className="wash-tile-sky h-56 shrink-0 overflow-hidden rounded-shell sm:h-52">
+                  
+                  <div
+                    style={washSurface("tile-sky")}
+                    className="h-56 shrink-0 overflow-hidden rounded-shell sm:h-52"
+                  >
                     <SegmentVisual
                       id={segment.id}
                       icon={<IconComponent size={26} weight="duotone" />}

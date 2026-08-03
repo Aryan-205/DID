@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal } from "@/components/ui/reveal";
 import { SmartLink } from "@/components/ui/smart-link";
+import { washSurface } from "@/components/ui/wash";
 import { careers, emails, routes } from "@/lib/content";
 
 /**
@@ -15,7 +16,10 @@ export function Careers() {
     <section id="careers" className="px-4 py-24 sm:px-6 sm:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
-          <div className="wash-panel overflow-hidden rounded-card border border-line shadow-card">
+          <div
+            style={washSurface("panel")}
+            className="overflow-hidden rounded-card border border-line shadow-card"
+          >
             <div className="grid grid-cols-1 gap-x-12 gap-y-12 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14">
               <div className="lg:col-span-6 flex flex-col items-start">
                 <span className="text-[13px] font-semibold text-accent">{careers.eyebrow}</span>

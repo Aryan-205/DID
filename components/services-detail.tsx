@@ -7,6 +7,7 @@ import {
 // Type-only, so it is erased at compile time and pulls in no client runtime.
 import type { Icon } from "@phosphor-icons/react";
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { services } from "@/lib/content";
 
 const icons: Record<string, Icon> = {
@@ -58,9 +59,8 @@ export function ServicesDetail() {
                 <Reveal className={`lg:col-span-5 ${flipped ? "lg:order-2" : ""}`}>
                   <div className="flex items-center gap-4">
                     <span
-                      className={`${
-                        service.tone === "deep" ? "wash-tile-deep" : "wash-tile"
-                      } grid h-14 w-14 place-items-center rounded-tile border border-line/70 text-accent`}
+                      style={washSurface(service.tone === "deep" ? "tile-deep" : "tile")}
+                      className="grid h-14 w-14 place-items-center rounded-tile border border-line/70 text-accent"
                     >
                       <IconComponent size={24} weight="duotone" aria-hidden="true" />
                     </span>

@@ -32,7 +32,7 @@ const totalSteps = processPhases.reduce((total, phase) => total + phase.steps.le
 export function ProcessScreening() {
   return (
     <section id="screening" className="scroll-mt-28 px-4 pb-24 sm:px-6 sm:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-6xl relative z-10">
         <Reveal>
           <p className="text-[13px] font-semibold text-accent">{screening.eyebrow}</p>
           <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">

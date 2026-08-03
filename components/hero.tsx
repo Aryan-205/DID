@@ -8,7 +8,7 @@ export function Hero() {
     <section className="relative isolate flex min-h-dvh items-center px-4 pb-20 pt-28 sm:px-6">
       <div className="mx-auto w-full max-w-5xl text-center">
         <Reveal>
-          <p className="inline-flex items-center gap-2 rounded-full border border-line/80 bg-surface/80 py-1.5 pl-2.5 pr-4 text-[12.5px] font-medium text-ink-soft shadow-card backdrop-blur-sm">
+          <p className="pill-face inline-flex items-center gap-2 rounded-full py-1.5 pl-2.5 pr-4 text-[12.5px] font-medium text-ink-soft">
             <ShieldCheckIcon size={15} weight="fill" className="text-accent" aria-hidden="true" />
             {hero.eyebrow}
           </p>

@@ -1,5 +1,6 @@
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { about, aboutPage, company, linkedIn } from "@/lib/content";
 
 const { leadership } = aboutPage;
@@ -21,7 +22,10 @@ export function AboutLeadership() {
               Deliberately not using stock photography: inventing a likeness for a
               named real person is not acceptable placeholder content.
             */}
-            <div className="wash-tile-deep grid place-items-center rounded-shell px-8 py-12 lg:col-span-4">
+            <div
+              style={washSurface("tile-deep")}
+              className="grid place-items-center rounded-shell px-8 py-12 lg:col-span-4"
+            >
               <div className="text-center">
                 <span
                   aria-hidden="true"

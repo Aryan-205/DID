@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
+import { washSurface } from "@/components/ui/wash";
 import { careersPage } from "@/lib/content";
 
 const { benefits, leave, worklife } = careersPage;
@@ -51,7 +52,10 @@ export function CareersBenefits() {
             </Reveal>
 
             <Reveal delay={0.14} className="flex">
-              <div className="wash-tile w-full rounded-card border border-line p-7 shadow-card sm:p-8">
+              <div
+                style={washSurface("tile")}
+                className="w-full rounded-card border border-line p-7 shadow-card sm:p-8"
+              >
                 <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-ink">
                   {worklife.heading}
                 </h3>

@@ -2,6 +2,7 @@ import { ArrowRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/s
 import { CtaButton } from "@/components/ui/cta-button";
 import { Reveal } from "@/components/ui/reveal";
 import { SmartLink } from "@/components/ui/smart-link";
+import { Wash } from "@/components/ui/wash";
 import { careersPage, emails } from "@/lib/content";
 
 const { apply } = careersPage;
@@ -10,8 +11,10 @@ export function CareersApply() {
   return (
     <section
       id="apply"
-      className="wash-closing relative isolate px-4 py-28 sm:px-6 sm:py-36"
+      className="relative isolate px-4 py-28 sm:px-6 sm:py-36"
     >
+      <Wash variant="closing" />
+
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>
           <div className="text-center">

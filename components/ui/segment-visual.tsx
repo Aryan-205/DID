@@ -146,11 +146,11 @@ const lifecycles = [
 function PrimeCoverage({ icon, reduce }: { icon: ReactNode; reduce: boolean }) {
   return (
     <div className="flex h-full flex-col justify-center gap-4 px-5 sm:px-6">
-      <motion.div
+      {/* <motion.div
         initial={reduce ? false : { opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.5, ease }}
+        transition={{ duration: 0.3, ease }}
         className="flex items-center gap-2 border-b border-line/80 pb-3"
       >
         <span className="text-accent">{icon}</span>
@@ -160,7 +160,7 @@ function PrimeCoverage({ icon, reduce }: { icon: ReactNode; reduce: boolean }) {
         <span className="ml-auto text-[10px] font-medium text-faint tabular-nums">
           3 lifecycles
         </span>
-      </motion.div>
+      </motion.div> */}
 
       <div className="flex flex-col gap-3">
         {lifecycles.map((project, index) => (
@@ -171,7 +171,7 @@ function PrimeCoverage({ icon, reduce }: { icon: ReactNode; reduce: boolean }) {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.55, delay: 0.1 + index * 0.1, ease }}
           >
-            <div className="relative h-[2px] w-full overflow-hidden rounded-full bg-line">
+            <div className="relative h-0.5 w-full overflow-hidden rounded-full bg-line">
               <motion.span
                 className="absolute inset-y-0 left-0 w-full origin-left rounded-full bg-accent"
                 initial={reduce ? false : { scaleX: 0 }}
@@ -183,7 +183,7 @@ function PrimeCoverage({ icon, reduce }: { icon: ReactNode; reduce: boolean }) {
               {reduce ? null : (
                 <motion.span
                   className="absolute inset-y-0 w-8 rounded-full bg-white/70"
-                  animate={{ x: ["-2rem", "16rem"] }}
+                  animate={{ x: ["-2rem", "20rem"] }}
                   transition={{
                     duration: 1.5,
                     repeat: Infinity,

@@ -2,6 +2,7 @@ import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { Reveal } from "@/components/ui/reveal";
+import { Wash } from "@/components/ui/wash";
 
 type Stat = {
   figure: string;
@@ -24,7 +25,9 @@ type PageHeroProps = {
  */
 export function PageHero({ eyebrow, heading, intro, stats, children }: PageHeroProps) {
   return (
-    <section className="wash-hero relative isolate px-4 pb-20 pt-36 sm:px-6 sm:pb-24 sm:pt-44">
+    <section className="relative isolate px-4 pb-20 pt-36 sm:px-6 sm:pb-24 sm:pt-44">
+      <Wash variant="hero" />
+
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
           <Link
