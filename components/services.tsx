@@ -53,7 +53,7 @@ export function Services() {
                   */}
                   <div
                     style={washSurface(service.tone === "deep" ? "tile-deep" : "tile")}
-                    className="h-40 shrink-0 overflow-hidden rounded-tile border border-line/70 sm:h-48"
+                    className="h-52 shrink-0 overflow-hidden rounded-tile border border-line/70 sm:h-60"
                   >
                     <ServiceVisual id={service.id} />
                   </div>
