@@ -32,17 +32,21 @@ export function ClientWall() {
 
         {/*
           Twelve clients, twelve cells. Divides evenly at 2, 3 and 4 columns, so
-          no breakpoint leaves a ragged final row.
+          no breakpoint leaves a ragged final row. The tiles sit inset on a sunken
+          panel with a hairline gutter between them, so the wall reads as one block
+          rather than twelve loose cards.
         */}
-        <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-          {clients.map((client, index) => (
-            <Reveal key={client} as="li" delay={Math.min(index, 6) * 0.04} className="flex">
-              <div className="flex min-w-0 flex-1 items-center justify-center rounded-tile border border-line bg-white px-4 py-7 shadow-card hover:scale-105 duration-200 ease-in cursor-pointer hover:shadow-lg hover:shadow-blue-200">
-                <ClientLogo name={client} />
-              </div>
-            </Reveal>
-          ))}
-        </ul>
+        <div className="mt-12 rounded-panel bg-sunken p-2 ring-1 ring-line/70">
+          <ul className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 lg:grid-cols-4">
+            {clients.map((client, index) => (
+              <Reveal key={client} as="li" delay={Math.min(index, 6) * 0.04} className="flex">
+                <div className="flex min-w-0 flex-1 items-center justify-center rounded-tile bg-white px-4 py-9 shadow-[0_1px_2px_rgb(13_20_32/0.05)] ring-1 ring-line/60 transition duration-200 ease-out hover:shadow-card hover:ring-line-strong">
+                  <ClientLogo name={client} variant="wordmark" />
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

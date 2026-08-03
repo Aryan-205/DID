@@ -24,7 +24,7 @@ type PageHeroProps = {
  */
 export function PageHero({ eyebrow, heading, intro, stats, children }: PageHeroProps) {
   return (
-    <section className="wash-hero relative isolate overflow-hidden px-4 pb-20 pt-36 sm:px-6 sm:pb-24 sm:pt-44">
+    <section className="wash-hero relative isolate px-4 pb-20 pt-36 sm:px-6 sm:pb-24 sm:pt-44">
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
           <Link

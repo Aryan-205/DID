@@ -1,6 +1,7 @@
-import { CheckCircleIcon, LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRightIcon, CheckCircleIcon, LinkedinLogoIcon } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/reveal";
-import { about, company, linkedIn, values } from "@/lib/content";
+import { about, company, linkedIn, routes, values } from "@/lib/content";
 
 export function About() {
   return (
@@ -17,6 +18,20 @@ export function About() {
               </p>
             ))}
           </div>
+
+          {/* Full firm record, leadership and the values in detail live on /about. */}
+          <Link
+            href={routes.about}
+            className="group mt-7 inline-flex items-center gap-2 text-[14px] font-medium text-accent"
+          >
+            More about the firm
+            <ArrowRightIcon
+              size={14}
+              weight="bold"
+              aria-hidden="true"
+              className="transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5"
+            />
+          </Link>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-4 lg:grid-cols-12">

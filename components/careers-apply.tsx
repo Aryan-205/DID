@@ -10,7 +10,7 @@ export function CareersApply() {
   return (
     <section
       id="apply"
-      className="wash-closing relative isolate overflow-hidden px-4 py-28 sm:px-6 sm:py-36"
+      className="wash-closing relative isolate px-4 py-28 sm:px-6 sm:py-36"
     >
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>

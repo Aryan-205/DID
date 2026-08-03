@@ -2,6 +2,7 @@ import { BankIcon, BuildingsIcon, HandshakeIcon } from "@phosphor-icons/react/di
 import type { Icon } from "@phosphor-icons/react";
 import { ClientLogo } from "@/components/ui/logo";
 import { Reveal } from "@/components/ui/reveal";
+import { SegmentVisual } from "@/components/ui/segment-visual";
 import { platforms, segments } from "@/lib/content";
 
 const icons: Record<string, Icon> = {
@@ -33,7 +34,7 @@ function BrandRow({ ariaHidden = false }: { ariaHidden?: boolean }) {
 
 export function Segments() {
   return (
-    <section id="segments" className="wash-segments px-4 pb-24 pt-6 sm:px-6 sm:pb-32 overflow-auto">
+    <section id="segments" className="wash-segments px-4 pb-24 pt-6 sm:px-6 sm:pb-32">
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
           <p className="text-center text-[13px] font-medium text-muted">Platforms we work on</p>
@@ -58,12 +59,14 @@ export function Segments() {
                 <article className="flex w-full flex-col rounded-panel bg-white p-2 shadow-segment">
                   {/*
                     Inner radius is 24px outer minus 8px padding, so the curves stay
-                    concentric with the card.
+                    concentric with the card. Clipped, because the illustration inside
+                    is sized to fill the bed rather than to fit inside it.
                   */}
-                  <div className="wash-tile-sky grid h-52 shrink-0 place-items-center rounded-shell sm:h-48">
-                    <span className="grid h-14 w-14 place-items-center rounded-full bg-white text-accent shadow-segment">
-                      <IconComponent size={26} weight="duotone" aria-hidden="true" />
-                    </span>
+                  <div className="wash-tile-sky h-56 shrink-0 overflow-hidden rounded-shell sm:h-52">
+                    <SegmentVisual
+                      id={segment.id}
+                      icon={<IconComponent size={26} weight="duotone" />}
+                    />
                   </div>
 
                   <div className="flex flex-1 flex-col px-5 pb-6 pt-6">

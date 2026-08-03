@@ -48,22 +48,24 @@ export const primaryCta = {
 } as const;
 
 /**
- * Careers is a route of its own, so the landing page only teases it. Every other
- * nav target is a section on the landing page and is written as `/#id` rather than
- * `#id`, so the same header works from `/careers` as it does from home.
+ * Every nav target is now a route of its own. The landing page keeps `#process`
+ * and `#about` sections as teasers, but the header points at the full pages, so
+ * the same header works identically from any route.
  */
 export const routes = {
   home: "/",
   services: "/services",
   work: "/past-performance",
+  process: "/process",
+  about: "/about",
   careers: "/careers",
 } as const;
 
 export const nav = [
   { label: "Services", href: routes.services },
   { label: "Past performance", href: routes.work },
-  { label: "Process", href: "/#process" },
-  { label: "About", href: "/#about" },
+  { label: "Process", href: routes.process },
+  { label: "About", href: routes.about },
   { label: "Careers", href: routes.careers },
 ] as const;
 
@@ -498,22 +500,34 @@ export const workPage = {
 /**
  * The published twelve step recruitment process, grouped into four phases.
  * A flat twelve item list is the wrong component for this much content.
+ *
+ * `intent` states what the phase is for. The landing page teaser ignores it and
+ * shows the steps alone; /process leads with it, because a reader who has come to
+ * a page about process wants the reasoning, not just the checklist.
  */
 export const processPhases = [
   {
     name: "Define",
+    intent:
+      "A role written against a real business need, not a template. Most bad placements are decided here, before anyone has been sourced.",
     steps: ["Write the job description against real business need", "Publish to our site and partner portals"],
   },
   {
     name: "Source",
+    intent:
+      "Research first, database second. The screened pool is constantly extending, so a critical position does not start from zero.",
     steps: ["Research to locate the talent", "Check our existing candidate databases"],
   },
   {
     name: "Qualify",
+    intent:
+      "Three separate reads on the same person: a conversation, a depth interview, and an evaluation against the actual technical work.",
     steps: ["Qualify by initial telephone interview", "Run in-depth interviews with finalists", "Technical evaluation"],
   },
   {
     name: "Verify",
+    intent:
+      "Everything claimed on the resume is checked against a source that is not the candidate, and the last interview happens face to face.",
     steps: [
       "Reference checks on past performance",
       "Background screening",
@@ -523,6 +537,71 @@ export const processPhases = [
     ],
   },
 ] as const;
+
+/**
+ * /process. Two documented processes sit under this firm: the twelve step
+ * screening every candidate moves through, and the four delivery movements every
+ * project runs on. Both already exist elsewhere in this file, so the page composes
+ * them rather than restating them: `processPhases` supplies the screening steps and
+ * `servicesPage.approach.steps` supplies the movement names and intents. Only the
+ * material that exists nowhere else - the artifact each movement hands over, and
+ * the principles the two processes share - is declared here.
+ */
+export const processPage = {
+  eyebrow: "How we work",
+  heading: "Two processes: one for the people, one for the delivery.",
+  intro: [
+    "Whichever service line you engage, the work runs on one of two documented processes. People go through twelve screening steps before they reach your team. Projects go through four movements, and we are still accountable at the last one rather than handing over at design.",
+    "Both are published here in full, because process is easy to claim and harder to show. If a step below is not happening on your engagement, that is a fair question to put to us.",
+  ],
+  stats: [
+    { figure: "12", label: "Screening steps", detail: "Before a candidate reaches your team" },
+    { figure: "4", label: "Screening phases", detail: "Define, source, qualify, verify" },
+    { figure: "3", label: "Interviews", detail: "Telephone, in depth, then on site" },
+    { figure: "4", label: "Delivery movements", detail: "Analyze, design, develop, implement" },
+  ],
+  screening: {
+    eyebrow: "Recruitment process",
+    heading: "Twelve steps before anyone reaches your team.",
+    body: "Screening is deliberately slow at the front so that delivery is not slow later. A resource who cannot do the work was never the cheaper option, which is why cost control sits in this process rather than in a rate negotiation.",
+    closingNote:
+      "The same process governs our own hires. Candidates applying for a role at the firm move through it exactly as candidates we place for a client do.",
+  },
+  delivery: {
+    eyebrow: "Delivery process",
+    heading: "Four movements, and we are still there at the last one.",
+    /**
+     * Keyed by the step names in servicesPage.approach.steps. What each movement
+     * hands over, drawn from the documented engagements rather than invented: the
+     * Oracle EBS and federal facilities work evidences every line below.
+     */
+    artifacts: {
+      Analyze: "Requirements analysis and definition, use cases and user stories",
+      Design: "Functional and technical design, signed off before anyone builds",
+      Develop: "Build and unit test against that design, progress visible throughout",
+      Implement: "Test execution, production deployment, and break-fix support after it",
+    } as Record<string, string>,
+    handoverNote:
+      "Full project lifecycle management is the whole point of the fourth movement. Break-fix support from test execution through to production deployment is work we have done under federal process, not a line in a proposal.",
+  },
+  principles: [
+    {
+      name: "Screening is where cost control happens",
+      detail:
+        "Not in the rate. A placement who cannot do the work costs more than the expensive candidate you passed on, and it costs it later, when it is harder to fix.",
+    },
+    {
+      name: "Design is agreed before build",
+      detail:
+        "The technical and functional design is produced and accepted first. Everything after it is measured against something both sides already signed off.",
+    },
+    {
+      name: "Feedback is asked for, not waited on",
+      detail:
+        "We survey clients through the engagement, positive and negative. Preferred supplier status with several of them came from that habit rather than from a sales cycle.",
+    },
+  ],
+} as const;
 
 /**
  * Grounded strictly in the stacks evidenced by documented past performance.
@@ -614,6 +693,55 @@ export const about = {
       body: "A resource who cannot do the work is not a saving. Screening is where cost control actually happens.",
     },
   ],
+} as const;
+
+/**
+ * /about. The landing page section above states the firm's position in two
+ * paragraphs and a values list; this page is the record behind it. The hero reads
+ * its figures from getCredentials(), so the years-in-business number stays live
+ * here for the same reason it does on the landing page.
+ */
+export const aboutPage = {
+  eyebrow: "About us",
+  heading: "One firm, answerable for the people and the delivery.",
+  intro: [
+    "Defense in Depth Solutions has been placing IT professionals and delivering software since 2007, from Houston and Leesburg, as a women-owned business enterprise. The work is federal in character even when the client is commercial: systems of record, the reporting built on them, and the accessibility and testing standards that decide whether either survives review.",
+    "The firm is deliberately small enough that the president is involved in engagements rather than briefed on them, and deliberately structured so that the team who screened a candidate is the team accountable for how that candidate performs.",
+  ],
+  story: {
+    eyebrow: "Position",
+    heading: "Most suppliers separate the people from the delivery.",
+    body: [
+      "A staffing firm sends you resumes and stops there. An integrator sends you a team and subcontracts the sourcing. Either way the accountability splits at exactly the point where an engagement usually fails, and you are left arbitrating between two suppliers who each have a defensible story.",
+      "We do both, which means neither story is available to us. The twelve step screening process and the four delivery movements are run by one firm, and the same four values govern a hiring decision as govern a client deliverable.",
+      "That is also the limit we work to. We take work we can point to in past performance and decline work we cannot, which is a shorter list than most capability statements and a more useful one.",
+    ],
+  },
+  factsTitle: "The firm at a glance",
+  facts: [
+    { label: "Legal name", value: "Defense in Depth Solutions, Inc." },
+    { label: "Established", value: "2007" },
+    { label: "Ownership", value: "Women-owned business enterprise" },
+    { label: "President", value: "Madina Shaik" },
+    { label: "Corporate office", value: "Houston, TX" },
+    { label: "Second office", value: "Leesburg, VA" },
+    { label: "Service lines", value: "Staffing, software, training, web" },
+    { label: "Delivery standard", value: "Section 508 accessibility" },
+  ],
+  leadership: {
+    eyebrow: "Leadership",
+    heading: "The president is on the engagement, not briefed about it.",
+    body: "Madina Shaik has led the firm since it was established in 2007. Superior performance awards are determined by the project manager together with the president, which is a small detail that says most of what there is to say about how close leadership sits to delivery here.",
+  },
+  valuesIntro: {
+    eyebrow: "Values",
+    heading: "Six values, applied to hiring as strictly as to client work.",
+    body: "These are not wall decoration. Every employee is expected to exemplify them, and the annual performance award is evaluated against them using customer input and direct supervisor feedback.",
+  },
+  next: {
+    heading: "Where to look next",
+    body: "The claims on this page are all evidenced elsewhere on the site. Start wherever you are most sceptical.",
+  },
 } as const;
 
 /**
@@ -844,9 +972,10 @@ export const footerColumns = [
   {
     title: "Company",
     links: [
-      { label: "About us", href: "/#about" },
+      { label: "About us", href: routes.about },
       { label: "Past performance", href: routes.work },
-      { label: "Our process", href: "/#process" },
+      { label: "Our process", href: routes.process },
+      { label: "Values", href: `${routes.about}#values` },
       { label: "Clients", href: "/#clients" },
     ],
   },

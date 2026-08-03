@@ -5,7 +5,7 @@ import { closing, offices, primaryCta } from "@/lib/content";
 
 export function Closing() {
   return (
-    <section id="contact" className="wash-closing relative isolate overflow-hidden px-4 py-28 sm:px-6 sm:py-36">
+    <section id="contact" className="wash-closing relative isolate px-4 py-28 sm:px-6 sm:py-36">
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>
           <div className="text-center">

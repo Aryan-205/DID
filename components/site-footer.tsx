@@ -9,7 +9,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden border-t border-line bg-surface px-4 pt-16 sm:px-6">
+    <footer className="relative border-t border-line bg-surface px-4 pt-16 sm:px-6">
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-2">

@@ -36,8 +36,25 @@ function initialsFor(name: string) {
 /**
  * Client lockup: monogram plus wordmark. These are real companies, so we render a
  * neutral house-style mark rather than reproducing trademarked logos we do not hold.
+ *
+ * `wordmark` drops the monogram for the client wall, where each name already sits
+ * alone in its own tile and the disc only competes with it.
  */
-export function ClientLogo({ name }: { name: string }) {
+export function ClientLogo({
+  name,
+  variant = "lockup",
+}: {
+  name: string;
+  variant?: "lockup" | "wordmark";
+}) {
+  if (variant === "wordmark") {
+    return (
+      <span className="truncate text-[13.5px] font-semibold tracking-[-0.02em] text-ink-soft sm:text-[15px] lg:text-[16.5px]">
+        {name}
+      </span>
+    );
+  }
+
   return (
     <span className="inline-flex items-center gap-2.5">
       <span
