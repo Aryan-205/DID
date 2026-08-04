@@ -18,10 +18,10 @@ export function ClientStrip() {
           <ul className="mt-8 grid grid-cols-2 overflow-hidden rounded-card border-l border-t border-line sm:grid-cols-3 lg:grid-cols-4 bg-red-500 p-2">
             {clients.map((client) => (
               <li
-                key={client}
-                className="flex min-w-0 items-center justify-center rounded-2xl bg-white px-4 py-6"
+                key={client.name}
+                className="group flex min-w-0 items-center justify-center rounded-2xl bg-white px-4 py-6"
               >
-                <ClientLogo name={client} />
+                <ClientLogo name={client.name} logo={client.logo} />
               </li>
             ))}
           </ul>

@@ -79,21 +79,28 @@ export const hero = {
   secondaryCta: { label: "See past performance", href: "#work" },
 } as const;
 
-/** Clients carried over verbatim from the existing site, in its own order. */
+/**
+ * Clients carried over verbatim from the existing site, in its own order. `logo`
+ * points at the supplied mark in `public/`; every file is a 137x137 square canvas
+ * with the logo centred inside it, so the wall tiles share one aspect ratio.
+ */
 export const clients = [
-  "Infostretch",
-  "BMC",
-  "Interactive Brokers",
-  "Karma",
-  "NS",
-  "Tracfone",
-  "Turnberry Solutions",
-  "W3R",
-  "Genesys",
-  "Pinnacle",
-  "Q4i",
-  "Vision Eye",
+  { name: "Infostretch", logo: "/brand7.png" },
+  { name: "BMC", logo: "/brand4.png" },
+  { name: "Interactive Brokers", logo: "/brand12.png" },
+  { name: "Karma", logo: "/brand8.png" },
+  { name: "Norfolk Southern", logo: "/brand9.png" },
+  { name: "Tracfone", logo: "/brand1.png" },
+  { name: "Turnberry Solutions", logo: "/brand3.png" },
+  { name: "W3R Consulting", logo: "/brand6.png" },
+  { name: "Genesys Consulting Services", logo: "/brand11.png" },
+  { name: "Pinnacle Group", logo: "/brand2.png" },
+  { name: "Q4i", logo: "/brand5.png" },
+  { name: "Vision Eye Enterprises", logo: "/brand10.png" },
 ] as const;
+
+/** Intrinsic pixel size of every file in `clients[].logo`. */
+export const CLIENT_LOGO_SIZE = 137;
 
 /**
  * Computed at render rather than hardcoded, so the years-in-business figure cannot

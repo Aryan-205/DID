@@ -1,4 +1,5 @@
-import { company } from "@/lib/content";
+import Image from "next/image";
+import { CLIENT_LOGO_SIZE, company } from "@/lib/content";
 
 /**
  * Brand mark: three concentric layers, which is literally what defense in depth
@@ -14,14 +15,29 @@ export function BrandMark({ className = "h-6 w-6" }: { className?: string }) {
   );
 }
 
-export function Wordmark({ className = "" }: { className?: string }) {
+/** Intrinsic pixel size of `public/Logo.avif`. */
+const WORDMARK_WIDTH = 520;
+const WORDMARK_HEIGHT = 240;
+
+/**
+ * The real company lockup. It already carries the name as artwork, so nothing is
+ * set alongside it and the legal name lives in `alt` instead.
+ *
+ * Height is driven by `className` with `w-auto` holding the 13:6 ratio, so the
+ * header pill keeps its fixed h-14 no matter what the file's intrinsic size is.
+ */
+export function Wordmark({ className = "h-9 w-auto" }: { className?: string }) {
   return (
-    <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <BrandMark className="h-[22px] w-[22px] text-accent" />
-      <span className="text-[15px] font-semibold tracking-[-0.03em] text-ink">
-        {company.shortName}
-      </span>
-    </span>
+    <Image
+      src="/Logo.avif"
+      alt={company.legalName}
+      width={WORDMARK_WIDTH}
+      height={WORDMARK_HEIGHT}
+      sizes="160px"
+      loading="eager"
+      fetchPriority="high"
+      className={className}
+    />
   );
 }
 
@@ -34,19 +50,38 @@ function initialsFor(name: string) {
 }
 
 /**
- * Client lockup: monogram plus wordmark. These are real companies, so we render a
- * neutral house-style mark rather than reproducing trademarked logos we do not hold.
+ * Client lockup. When we hold the actual mark it is rendered as the image and the
+ * name carries only in `alt`; otherwise we fall back to a neutral house-style
+ * monogram or wordmark rather than inventing a logo.
+ *
+ * The marks sit slightly held back at rest and come to full strength on hover of
+ * the enclosing tile.
  *
  * `wordmark` drops the monogram for the client wall, where each name already sits
  * alone in its own tile and the disc only competes with it.
  */
 export function ClientLogo({
   name,
+  logo,
   variant = "lockup",
 }: {
   name: string;
+  logo?: string;
   variant?: "lockup" | "wordmark";
 }) {
+  if (logo) {
+    return (
+      <Image
+        src={logo}
+        alt={name}
+        width={CLIENT_LOGO_SIZE}
+        height={CLIENT_LOGO_SIZE}
+        sizes="120px"
+        className="h-14 w-14 object-contain opacity-80 transition duration-300 ease-out group-hover:opacity-100 sm:h-16 sm:w-16 lg:h-18 lg:w-18"
+      />
+    );
+  }
+
   if (variant === "wordmark") {
     return (
       <span className="truncate text-[13.5px] font-semibold tracking-[-0.02em] text-ink-soft sm:text-[15px] lg:text-[16.5px]">

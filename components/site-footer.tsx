@@ -15,7 +15,7 @@ export function SiteFooter() {
           <div className="mx-auto w-full max-w-6xl">
             <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">
               <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-2">
-                <Wordmark />
+                <Wordmark className="h-11 w-auto" />
                 <p className="max-w-xs text-[13.5px] leading-relaxed text-muted">
                   {company.legalName}. IT staffing, software development and training since{" "}
                   {company.founded}.

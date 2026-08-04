@@ -36,8 +36,12 @@ export function SiteHeader() {
     <>
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 sm:pt-6">
         <div className="mx-auto flex h-14 w-full max-w-4xl items-center justify-between gap-4 rounded-shell border border-line/80 bg-surface/85 pl-5 pr-2 shadow-pill backdrop-blur-xl">
+          {/*
+            Sized off the pill's fixed h-14 rather than the file's intrinsic
+            520x240, so the lockup can never push the bar taller.
+          */}
           <Link href="/" className="shrink-0" aria-label="Defense In Depth Solutions, home">
-            <Wordmark />
+            <Wordmark className="h-8 w-auto sm:h-9" />
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
