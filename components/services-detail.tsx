@@ -20,7 +20,7 @@ const icons: Record<string, Icon> = {
 export function ServicesDetail() {
   return (
     <section className="px-4 pb-24 sm:px-6 sm:pb-32">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-6xl relative z-10">
         {/* Jump strip. Four service lines is short enough to index in one row. */}
         <Reveal>
           <nav aria-label="Service lines" className="border-y border-line py-4">
@@ -72,7 +72,7 @@ export function ServicesDetail() {
                     </span>
                   </div>
 
-                  <h2 className="mt-6 text-[clamp(1.6rem,2.8vw,2.1rem)] font-semibold leading-tight text-ink">
+                  <h2 className="mt-6 text-[clamp(1.6rem,2.8vw,2.1rem)] font-medium leading-tight text-ink">
                     {service.name}
                   </h2>
 

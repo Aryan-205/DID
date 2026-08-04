@@ -16,7 +16,7 @@ export function AboutStory() {
         <Reveal className="lg:col-span-7">
           <div>
             <p className="text-[13px] font-semibold text-accent">{story.eyebrow}</p>
-            <h2 className="mt-4 max-w-xl text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.12] text-ink">
+            <h2 className="mt-4 max-w-xl text-[clamp(1.9rem,3.6vw,2.7rem)] font-medium leading-[1.12] text-ink">
               {story.heading}
             </h2>
 

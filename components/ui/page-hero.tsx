@@ -45,7 +45,7 @@ export function PageHero({ eyebrow, heading, intro, stats, children }: PageHeroP
 
           <p className="mt-8 text-[13px] font-semibold text-accent">{eyebrow}</p>
 
-          <h1 className="mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.5rem)] font-semibold leading-[1.06] text-ink">
+          <h1 className="mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.5rem)] font-medium leading-[1.06] text-ink">
             {heading}
           </h1>
 

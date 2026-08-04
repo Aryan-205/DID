@@ -18,7 +18,7 @@ export function CareersOpening() {
               <p className="text-[13px] font-semibold text-accent">{opening.eyebrow}</p>
 
               <div className="mt-3 flex flex-wrap items-baseline gap-x-5 gap-y-2">
-                <h2 className="text-[clamp(1.6rem,3vw,2.25rem)] font-semibold leading-tight text-ink">
+                <h2 className="text-[clamp(1.6rem,3vw,2.25rem)] font-medium leading-tight text-ink">
                   {opening.title}
                 </h2>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/80 px-3 py-1 text-[12.5px] font-medium text-ink-soft">

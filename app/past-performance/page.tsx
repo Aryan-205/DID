@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Closing } from "@/components/closing";
+import { ClientRoster } from "@/components/client-roster";
 import { EngagementList } from "@/components/engagement-list";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -40,6 +41,7 @@ export default function PastPerformancePage() {
         </PageHero>
 
         <EngagementList />
+        <ClientRoster />
         <Closing />
       </main>
       <SiteFooter />

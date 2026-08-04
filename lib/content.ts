@@ -121,17 +121,34 @@ export function getCredentials() {
  * Platforms the documented engagements actually ran on. Labelled "platforms we
  * work on" rather than "partners", since a vendor partnership is a claim the
  * source material does not evidence for any specific vendor.
+ *
+ * The brand line carries vendor marks, so the list is cut to the vendors whose
+ * own artwork we can show. PeopleSoft and BusinessObjects are Oracle and SAP
+ * products and are named in full in the platform table further down the page;
+ * IBM Rational and Micro Focus LoadRunner likewise sit under their vendor here.
+ *
+ * `width` and `height` are the file's intrinsic size. `drawnHeight` is the
+ * height the mark is set at in the line, tuned one logo at a time: the files
+ * range from 7.6:1 to 2:1, so a shared box would leave ORACLE a hairline beside
+ * SAP. Micro Focus publishes no usable vector, so it carries no file and is set
+ * in type rather than redrawn by hand.
  */
-export const platforms = [
-  "Oracle",
-  "SAP",
-  "PeopleSoft",
-  "Adobe",
-  "BusinessObjects",
-  "IBM Rational",
-  "Micro Focus",
-  "Apache JMeter",
-] as const;
+export type Platform = {
+  name: string;
+  logo?: string;
+  width?: number;
+  height?: number;
+  drawnHeight?: number;
+};
+
+export const platforms: readonly Platform[] = [
+  { name: "Oracle", logo: "/brands/oracle.svg", width: 512, height: 67, drawnHeight: 20 },
+  { name: "SAP", logo: "/brands/sap.svg", width: 512, height: 254, drawnHeight: 30 },
+  { name: "IBM", logo: "/brands/ibm.svg", width: 512, height: 205, drawnHeight: 25 },
+  { name: "Adobe", logo: "/brands/adobe.svg", width: 512, height: 134, drawnHeight: 26 },
+  { name: "Apache JMeter", logo: "/brands/jmeter.svg", width: 512, height: 192, drawnHeight: 26 },
+  { name: "Micro Focus" },
+];
 
 /**
  * Client wall. No headline figure: the source material names twelve clients and
@@ -502,6 +519,17 @@ export const workPage = {
     { figure: "508", label: "Compliant", detail: "Verified on federal form sets" },
   ],
   note: "Client references are available on request for the engagements listed here.",
+} as const;
+
+/**
+ * Roster band on /past-performance. Deliberately quieter than the home page wall:
+ * the dossier above it is the argument, and this is the supporting evidence rather
+ * than a second pitch. The copy stays factual because several engagements on that
+ * page are described by type rather than named, and the two must not contradict.
+ */
+export const clientRoster = {
+  eyebrow: "Clients we have delivered for",
+  note: "Not every engagement above is named. Where a client asked to stay unattributed, it is described by type instead.",
 } as const;
 
 /**

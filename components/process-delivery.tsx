@@ -18,7 +18,7 @@ export function ProcessDelivery() {
         <div className="rounded-card border border-line bg-surface px-6 py-14 shadow-card sm:px-10 sm:py-16 lg:px-14">
           <Reveal>
             <p className="text-[13px] font-semibold text-accent">{delivery.eyebrow}</p>
-            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
               {delivery.heading}
             </h2>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">{body}</p>

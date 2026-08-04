@@ -16,7 +16,7 @@ export function ClientWall() {
             <div>
               <h2 className="max-w-xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-normal leading-[1.14] text-muted">
                 {clientWall.headingLead}{" "}
-                <span className="font-semibold text-ink">{clientWall.headingAccent}</span>{" "}
+                <span className="font-medium text-ink">{clientWall.headingAccent}</span>{" "}
                 {clientWall.headingTail}
               </h2>
               <p className="mt-4 max-w-lg text-[14.5px] leading-relaxed text-muted">

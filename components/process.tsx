@@ -9,7 +9,7 @@ export function Process() {
       <div className="mx-auto w-full max-w-6xl">
         <div className="overflow-hidden rounded-card border border-line bg-surface px-6 py-14 shadow-card sm:px-10 sm:py-16 lg:px-14">
           <Reveal>
-            <h2 className="max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+            <h2 className="max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
               Twelve steps before anyone reaches your team.
             </h2>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">

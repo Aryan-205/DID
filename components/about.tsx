@@ -9,7 +9,7 @@ export function About() {
     <section id="about" className="px-4 pb-24 sm:px-6 sm:pb-32">
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
-          <h2 className="max-w-3xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+          <h2 className="max-w-3xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
             {about.heading}
           </h2>
           <div className="mt-6 flex max-w-2xl flex-col gap-4">

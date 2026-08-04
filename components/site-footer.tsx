@@ -10,7 +10,8 @@ export function SiteFooter() {
 
   return (
     <footer className="relative p-4 pb-0">
-      <div className="p-1 shadow-[0_0_1px_1px_rgba(0,0,0,0.1)] rounded-2xl bg-[#85C4FF]/20 pb-0">
+      {/* Frame tint. Was the CTA's old #85C4FF stroke colour, so it tracks the accent now. */}
+      <div className="p-1 shadow-[0_0_1px_1px_rgba(0,0,0,0.1)] rounded-2xl bg-accent/15 pb-0">
         <div className="bg-surface px-4 pt-16 sm:px-6 rounded-2xl pb-0">
           <div className="mx-auto w-full max-w-6xl">
             <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 lg:grid-cols-5">

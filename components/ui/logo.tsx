@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CLIENT_LOGO_SIZE, company } from "@/lib/content";
+import { CLIENT_LOGO_SIZE, company, type Platform } from "@/lib/content";
 
 /**
  * Brand mark: three concentric layers, which is literally what defense in depth
@@ -41,6 +41,40 @@ export function Wordmark({ className = "h-9 w-auto" }: { className?: string }) {
   );
 }
 
+/**
+ * Vendor mark for the brand line under the hero. Each file is the vendor's own
+ * artwork, so the drawn height comes from the data rather than a shared class -
+ * the proportions run from 7.6:1 to 2:1 and one box would set ORACLE as a
+ * hairline beside SAP. Width is derived from the intrinsic ratio so nothing is
+ * squashed.
+ *
+ * Held in greyscale at rest so eight vendor palettes read as one band, and
+ * released to full colour on hover. The marquee pauses on hover, so there is
+ * something to hover.
+ *
+ * Without a file we set the name in type rather than invent a mark for it.
+ */
+export function PlatformLogo({ name, logo, width, height, drawnHeight = 24 }: Platform) {
+  if (!logo || !width || !height) {
+    return (
+      <span className="text-[15px] font-semibold uppercase tracking-[0.08em] text-muted transition duration-300 ease-out group-hover:text-ink">
+        {name}
+      </span>
+    );
+  }
+
+  return (
+    <Image
+      src={logo}
+      alt={name}
+      width={Math.round((drawnHeight * width) / height)}
+      height={drawnHeight}
+      style={{ height: drawnHeight }}
+      className="w-auto opacity-70 grayscale transition duration-300 ease-out group-hover:opacity-100 group-hover:grayscale-0"
+    />
+  );
+}
+
 function initialsFor(name: string) {
   const words = name.trim().split(/\s+/);
   if (words.length > 1) {
@@ -59,15 +93,20 @@ function initialsFor(name: string) {
  *
  * `wordmark` drops the monogram for the client wall, where each name already sits
  * alone in its own tile and the disc only competes with it.
+ *
+ * `logoClassName` lets a denser context ask for a smaller mark; the default is the
+ * home page wall's size.
  */
 export function ClientLogo({
   name,
   logo,
   variant = "lockup",
+  logoClassName = "h-14 w-14 sm:h-16 sm:w-16 lg:h-18 lg:w-18",
 }: {
   name: string;
   logo?: string;
   variant?: "lockup" | "wordmark";
+  logoClassName?: string;
 }) {
   if (logo) {
     return (
@@ -77,7 +116,7 @@ export function ClientLogo({
         width={CLIENT_LOGO_SIZE}
         height={CLIENT_LOGO_SIZE}
         sizes="120px"
-        className="h-14 w-14 object-contain opacity-80 transition duration-300 ease-out group-hover:opacity-100 sm:h-16 sm:w-16 lg:h-18 lg:w-18"
+        className={`object-contain opacity-80 transition duration-300 ease-out group-hover:opacity-100 ${logoClassName}`}
       />
     );
   }

@@ -40,19 +40,41 @@
   --line: #e5e9f1;
   --line-strong: #d4dae7;
 
-  --accent: #1d6df5;
-  --accent-hover: #1559cf;
+  /*
+    The single blue, matched to the CTA face. Links, eyebrows and bullets have to
+    be the same blue as the primary button or the page reads as two palettes, so
+    this moved with it rather than staying on the old #1D6DF5.
+  */
+  --accent: #005889;
+  --accent-hover: #00456b;
   --accent-ink: #ffffff;
   --accent-tint: #e9f1fe;
-  --accent-tint-ink: #14539c;
+  --accent-tint-ink: #004a70;
 
-  /* Ambient washes. All drawn from the single blue. */
-  --wash-blue: #d9e6fb;
-  --wash-blue-soft: #eef4fe;
-  --wash-blue-deep: #c9dcf9;
+  /*
+    Ambient washes. All drawn from the single blue, and pulled onto its hue: these
+    were mixed against the old #1D6DF5 and sat around 209-217deg, which read violet
+    once the accent moved to #005889 at 202deg. Each is the same hue as the accent,
+    a little less saturated, so the page lights rather than tints.
 
-  /* Sky blue behind the segments band, specified as #9ED0FF = rgb(158 208 255). */
-  --wash-sky: #9ed0ff;
+    The whole ramp then moved down one rung, on request, for more blue in every
+    gradient on the site: --wash-blue-soft is now exactly what --wash-blue used to
+    be, and each of the others drops a matching ~8 points of lightness. Hue and
+    saturation are untouched at 202deg, so nothing shifts colour - the washes only
+    get deeper. Every gradient in the site reads these four, in wash.tsx, so this
+    block is the only place the depth is set.
+
+    Headings hold up: --ink clears 10:1 on the deepest point of any wash. Body copy
+    over a wash is set in --ink-soft, at 5.2:1. --muted is 2.6:1 at those same peaks
+    and is only used over a wash for two 13px labels, both of which sit where the
+    gradient is near zero - see the note against --muted if either one moves.
+  */
+  --wash-blue: #8dc9ec;
+  --wash-blue-soft: #c2e2f5;
+  --wash-blue-deep: #73bde8;
+
+  /* Sky behind the segments band. Was #9ED0FF, taken down furthest of the four. */
+  --wash-sky: #199be6;
 
   --wash-sand: #fbf3ee;
 
@@ -94,6 +116,9 @@
   --color-wash-blue: var(--wash-blue);
   --color-wash-blue-soft: var(--wash-blue-soft);
   --color-wash-blue-deep: var(--wash-blue-deep);
+  /* Exposed as a utility so the cards that used to hardcode #9ED0FF can track it. */
+  --color-wash-sky: var(--wash-sky);
+  --color-wash-sand: var(--wash-sand);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -165,25 +190,33 @@
   */
 
   /*
-    Primary CTA face, to the supplied spec:
-      fill    radial #7ABFFF (0%) -> #148EFF (100%)
-      stroke  2px inside, #85C4FF
-      shadow  four stacked layers, all #3697F2 = rgb(54 151 242)
+    Primary CTA face:
+      fill    radial #087ABA (0%) -> #005889 (100%)
+      stroke  2px inside, #2596D4
+      shadow  four stacked layers, all #005889 = rgb(0 88 137)
     Radius comes from rounded-control (12px). Border sits inside because Tailwind
     sets box-sizing: border-box, which matches Figma's "Inside" stroke position.
+
+    Restated from the original light-blue spec (#7ABFFF -> #148EFF, #85C4FF stroke,
+    #3697F2 glow) onto the deeper blue. Every relationship in that spec is kept, so
+    the face reads the same and only the hue depth moves: the centre stop stays ~11
+    points lighter than the edge, the stroke stays lighter than both so the rim
+    still catches, and the glow stays the fill colour. As a side effect white label
+    text now clears 7.6:1 against the fill, where the old #148EFF gave 3.3:1 and
+    passed for large text only.
   */
   .cta-face {
-    background-image: radial-gradient(ellipse at 50% 50%, #7abfff 0%, #148eff 100%);
-    border: 2px solid #85c4ff;
+    background-image: radial-gradient(ellipse at 50% 50%, #087aba 0%, #005889 100%);
+    border: 2px solid #2596d4;
     box-shadow:
-      0 53px 21px 0 rgb(54 151 242 / 0.07),
-      0 30px 18px 0 rgb(54 151 242 / 0.23),
-      0 13px 13px 0 rgb(54 151 242 / 0.38),
-      0 3px 7px 0 rgb(54 151 242 / 0.44);
+      0 53px 21px 0 rgb(0 88 137 / 0.07),
+      0 30px 18px 0 rgb(0 88 137 / 0.23),
+      0 13px 13px 0 rgb(0 88 137 / 0.38),
+      0 3px 7px 0 rgb(0 88 137 / 0.44);
   }
 
   .cta-face:hover {
-    background-image: radial-gradient(ellipse at 50% 50%, #64b2fb 0%, #0b7ce4 100%);
+    background-image: radial-gradient(ellipse at 50% 50%, #066a9e 0%, #00456b 100%);
   }
 
   /*

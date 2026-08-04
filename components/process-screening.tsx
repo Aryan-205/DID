@@ -35,7 +35,7 @@ export function ProcessScreening() {
       <div className="mx-auto w-full max-w-6xl relative z-10">
         <Reveal>
           <p className="text-[13px] font-semibold text-accent">{screening.eyebrow}</p>
-          <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+          <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
             {screening.heading}
           </h2>
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">{screening.body}</p>

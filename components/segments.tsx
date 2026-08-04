@@ -1,6 +1,6 @@
 import { BankIcon, BuildingsIcon, HandshakeIcon } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
-import { ClientLogo } from "@/components/ui/logo";
+import { PlatformLogo } from "@/components/ui/logo";
 import { Reveal } from "@/components/ui/reveal";
 import { SegmentVisual } from "@/components/ui/segment-visual";
 import { Wash, washSurface } from "@/components/ui/wash";
@@ -25,8 +25,8 @@ function BrandRow({ ariaHidden = false }: { ariaHidden?: boolean }) {
       className="flex shrink-0 items-center gap-x-12 pr-12 sm:gap-x-16 sm:pr-16 py-4"
     >
       {[...platforms, ...platforms].map((platform, index) => (
-        <li key={`${platform}-${index}`} className="shrink-0">
-          <ClientLogo name={platform} />
+        <li key={`${platform.name}-${index}`} className="group flex shrink-0 items-center">
+          <PlatformLogo {...platform} />
         </li>
       ))}
     </ul>

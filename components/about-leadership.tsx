@@ -52,7 +52,7 @@ export function AboutLeadership() {
 
             <div className="px-6 py-10 sm:px-10 sm:py-12 lg:col-span-8">
               <p className="text-[13px] font-semibold text-accent">{leadership.eyebrow}</p>
-              <h2 className="mt-4 max-w-lg text-[clamp(1.7rem,3vw,2.3rem)] font-semibold leading-[1.14] text-ink">
+              <h2 className="mt-4 max-w-lg text-[clamp(1.7rem,3vw,2.3rem)] font-medium leading-[1.14] text-ink">
                 {leadership.heading}
               </h2>
               <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">

@@ -15,7 +15,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={0.08}>
-          <h1 className="mx-auto mt-7 max-w-5xl text-[clamp(2.35rem,6.2vw,4.35rem)] font-semibold leading-[1.06] text-ink">
+          <h1 className="mx-auto mt-7 max-w-5xl text-[clamp(2.35rem,6.2vw,4.35rem)] font-medium leading-[1.06] text-ink">
             {hero.headlineLead}{" "}
             <span className="block">
               <span className="relative -mb-1 mr-1 inline-grid h-[0.86em] w-[0.86em] translate-y-[0.1em] place-items-center rounded-[0.24em] bg-accent align-baseline text-accent-ink">

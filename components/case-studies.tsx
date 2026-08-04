@@ -17,7 +17,7 @@ export function CaseStudies() {
             <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-accent">
               Past performance
             </p>
-            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
               Work delivered to federal process, on federal systems.
             </h2>
           </Reveal>

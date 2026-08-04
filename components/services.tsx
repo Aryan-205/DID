@@ -20,7 +20,7 @@ export function Services() {
         <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <Reveal>
             <p className="text-[13px] font-semibold text-accent">Services</p>
-            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+            <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
               Staffing, software and training under one contract.
             </h2>
           </Reveal>

@@ -12,7 +12,7 @@ export function Closing() {
       <div className="mx-auto w-full max-w-5xl">
         <Reveal>
           <div className="text-center">
-            <h2 className="mx-auto max-w-2xl text-[clamp(2.1rem,4.4vw,3.4rem)] font-semibold leading-[1.1] text-ink">
+            <h2 className="mx-auto max-w-2xl text-[clamp(2.1rem,4.4vw,3.4rem)] font-medium leading-[1.1] text-ink">
               {closing.heading}
             </h2>
             <p className="mx-auto mt-5 max-w-lg text-[15px] leading-relaxed text-ink-soft sm:text-base">

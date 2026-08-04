@@ -15,7 +15,7 @@ export function AboutValues() {
       <div className="mx-auto w-full max-w-6xl">
         <Reveal>
           <p className="text-[13px] font-semibold text-accent">{valuesIntro.eyebrow}</p>
-          <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.7rem)] font-semibold leading-[1.12] text-ink">
+          <h2 className="mt-4 max-w-2xl text-[clamp(1.9rem,3.6vw,2.7rem)] font-medium leading-[1.12] text-ink">
             {valuesIntro.heading}
           </h2>
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">

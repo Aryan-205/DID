@@ -23,7 +23,7 @@ export function Technologies() {
             <Reveal>
               <p className="text-[13px] font-semibold text-accent">{technologiesIntro.eyebrow}</p>
 
-              <h2 className="mt-4 text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+              <h2 className="mt-4 text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
                 {technologiesIntro.heading}
               </h2>
 

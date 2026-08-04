@@ -24,7 +24,7 @@ export function Careers() {
               <div className="lg:col-span-6 flex flex-col items-start">
                 <span className="text-[13px] font-semibold text-accent">{careers.eyebrow}</span>
 
-                <h2 className="mt-4 max-w-lg text-[clamp(1.9rem,3.6vw,2.9rem)] font-semibold leading-[1.12] text-ink">
+                <h2 className="mt-4 max-w-lg text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
                   {careers.heading}
                 </h2>
 

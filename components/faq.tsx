@@ -14,7 +14,7 @@ export function Faq() {
   return (
     <div className="p-12 bg-white">
       <div className="rounded-3xl border border-line p-2">
-        <section className="bg-linear-to-b from-[#CEE4F8] to-[#FBF3EE] px-4 py-24 sm:px-6 sm:py-32 rounded-2xl">
+        <section className="bg-linear-to-b from-wash-blue to-wash-sand px-4 py-24 sm:px-6 sm:py-32 rounded-2xl">
           <div className="mx-auto w-full max-w-3xl">
             <Reveal>
               <h2 className="text-center text-[clamp(1.9rem,3.6vw,2.9rem)] font-medium leading-[1.12] text-ink">
